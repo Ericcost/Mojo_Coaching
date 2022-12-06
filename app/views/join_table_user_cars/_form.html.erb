@@ -1,0 +1,17 @@
+<%= form_with(model: join_table_user_car) do |form| %>
+  <% if join_table_user_car.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(join_table_user_car.errors.count, "error") %> prohibited this join_table_user_car from being saved:</h2>
+
+      <ul>
+        <% join_table_user_car.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

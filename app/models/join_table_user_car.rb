@@ -1,0 +1,2 @@
+class JoinTableUserCar < ApplicationRecord
+end
