@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :meetings
   resources :feedbacks
   resources :communicationmeans
   resources :availabilities
