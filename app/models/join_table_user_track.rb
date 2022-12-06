@@ -1,0 +1,2 @@
+class JoinTableUserTrack < ApplicationRecord
+end
