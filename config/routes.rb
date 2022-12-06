@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  resources :communication_means
+  resources :join_table_user_tracks
   resources :meetings
   resources :feedbacks
-  resources :communicationmeans
   resources :availabilities
   resources :cars
   resources :tracks
