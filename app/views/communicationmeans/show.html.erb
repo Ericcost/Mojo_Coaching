@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @communicationmean %>
+
+<div>
+  <%= link_to "Edit this communicationmean", edit_communicationmean_path(@communicationmean) %> |
+  <%= link_to "Back to communicationmeans", communicationmeans_path %>
+
+  <%= button_to "Destroy this communicationmean", @communicationmean, method: :delete %>
+</div>

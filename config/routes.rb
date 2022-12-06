@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :communicationmeans
   resources :availabilities
   resources :cars
   resources :tracks

@@ -1,0 +1,17 @@
+<%= form_with(model: communicationmean) do |form| %>
+  <% if communicationmean.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(communicationmean.errors.count, "error") %> prohibited this communicationmean from being saved:</h2>
+
+      <ul>
+        <% communicationmean.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

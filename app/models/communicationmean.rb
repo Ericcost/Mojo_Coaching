@@ -1,0 +1,2 @@
+class Communicationmean < ApplicationRecord
+end
