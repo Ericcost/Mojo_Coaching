@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cars
+  resources :tracks
   devise_for :users
   resources :users
   root 'users#index'
