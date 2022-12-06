@@ -1,0 +1,2 @@
+class JoinTableUserCommunicationMean < ApplicationRecord
+end

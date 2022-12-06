@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :join_table_user_communication_means
   resources :join_table_user_cars
   resources :communication_means
   resources :join_table_user_tracks
