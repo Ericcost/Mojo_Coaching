@@ -1,8 +1,8 @@
 class CreateMeetings < ActiveRecord::Migration[7.0]
   def change
     create_table :meetings do |t|
-      t.belongs_to :user, index: true
-      t.belongs_to :user, index: true
+      t.integer :coach_id, index: true, foreign_key: true
+      t.integer :driver_id, index: true, foreign_key: true
       t.belong_to :availability, index: true
       t.integer :duration
       t.string :reason
