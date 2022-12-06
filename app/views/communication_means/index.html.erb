@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Communication means</h1>
+
+<div id="communication_means">
+  <% @communication_means.each do |communication_mean| %>
+    <%= render communication_mean %>
+    <p>
+      <%= link_to "Show this communication mean", communication_mean %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New communication mean", new_communication_mean_path %>
