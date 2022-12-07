@@ -16,7 +16,7 @@ class Meeting < ApplicationRecord
   validates :driver_id, presence: true, numericality: { only_integer: true }
   validates :coach_id, presence: true, numericality: { only_integer: true }
   validates :availability_id, presence: true, numericality: { only_integer: true }
-  validates :reason, presence: true
+  validates :meeting_type, presence: true
   validates :com_mean_id, presence: true, numericality: { only_integer: true }
 
 end
