@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183817) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.bigint "meeting_id"
-    t.text "feedback"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meeting_id"], name: "index_feedbacks_on_meeting_id"
@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183817) do
     t.bigint "driver_id"
     t.bigint "availability_id"
     t.integer "duration"
-    t.string "reason"
+    t.integer "meeting_type"
     t.string "video_url"
     t.bigint "com_mean_id"
     t.bigint "car_id"
