@@ -21,7 +21,8 @@ class User < ApplicationRecord
   has_many :join_table_user_tracks
   has_many :tracks, through: :join_table_user_tracks
 
-  has_many :feedbacks, through: :meetings
+  has_many :feedbacks, through: :coach_meetings
+  has_many :feedbacks, through: :driver_meetings
 
   has_many :availabilities
 
