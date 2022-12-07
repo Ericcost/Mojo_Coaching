@@ -77,3 +77,5 @@ end
 gem "devise", "~> 4.8"
 
 gem "faker", "~> 3.0"
+
+gem "table_print", "~> 1.5"
