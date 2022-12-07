@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Join table user com means</h1>
+
+<div id="join_table_user_com_means">
+  <% @join_table_user_com_means.each do |join_table_user_com_mean| %>
+    <%= render join_table_user_com_mean %>
+    <p>
+      <%= link_to "Show this join table user com mean", join_table_user_com_mean %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New join table user com mean", new_join_table_user_com_mean_path %>

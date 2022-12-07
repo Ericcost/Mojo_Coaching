@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @join_table_user_track %>
+
+<div>
+  <%= link_to "Edit this join table user track", edit_join_table_user_track_path(@join_table_user_track) %> |
+  <%= link_to "Back to join table user tracks", join_table_user_tracks_path %>
+
+  <%= button_to "Destroy this join table user track", @join_table_user_track, method: :delete %>
+</div>

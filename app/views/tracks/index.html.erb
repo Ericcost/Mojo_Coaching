@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tracks</h1>
+
+<div id="tracks">
+  <% @tracks.each do |track| %>
+    <%= render track %>
+    <p>
+      <%= link_to "Show this track", track %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New track", new_track_path %>

@@ -1,0 +1,17 @@
+<%= form_with(model: com_mean) do |form| %>
+  <% if com_mean.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(com_mean.errors.count, "error") %> prohibited this com_mean from being saved:</h2>
+
+      <ul>
+        <% com_mean.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
