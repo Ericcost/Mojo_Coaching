@@ -1,0 +1,2 @@
+module JoinTableUserComMeansHelper
+end

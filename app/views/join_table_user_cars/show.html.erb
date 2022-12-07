@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @join_table_user_car %>
+
+<div>
+  <%= link_to "Edit this join table user car", edit_join_table_user_car_path(@join_table_user_car) %> |
+  <%= link_to "Back to join table user cars", join_table_user_cars_path %>
+
+  <%= button_to "Destroy this join table user car", @join_table_user_car, method: :delete %>
+</div>

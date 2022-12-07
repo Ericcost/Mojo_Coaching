@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Com means</h1>
+
+<div id="com_means">
+  <% @com_means.each do |com_mean| %>
+    <%= render com_mean %>
+    <p>
+      <%= link_to "Show this com mean", com_mean %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New com mean", new_com_mean_path %>

@@ -76,3 +76,5 @@ end
 
 gem "rspec-rails", "~> 6.0"
 gem "devise", "~> 4.8"
+
+gem "faker", "~> 3.0"

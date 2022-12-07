@@ -1,0 +1,1 @@
+json.partial! "join_table_user_com_means/join_table_user_com_mean", join_table_user_com_mean: @join_table_user_com_mean
