@@ -17,11 +17,9 @@ class User < ApplicationRecord
 
   has_many :join_table_user_cars
   has_many :cars, through: :join_table_user_cars
-  has_many :meetings, through: :cars
 
   has_many :join_table_user_tracks
   has_many :tracks, through: :join_table_user_tracks
-  has_many :meetings, through: :tracks
 
   has_many :feedbacks, through: :meetings
 
