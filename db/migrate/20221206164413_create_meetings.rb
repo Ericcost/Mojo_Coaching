@@ -5,7 +5,7 @@ class CreateMeetings < ActiveRecord::Migration[7.0]
       t.belongs_to :driver, index: true, foreign_key: {to_table: :users}
       t.belongs_to :availability, index: true
       t.integer :duration
-      t.string :reason
+      t.integer :meeting_type
       t.string :video_url
       t.belongs_to :com_mean, index: true
       t.belongs_to :car, index: true
