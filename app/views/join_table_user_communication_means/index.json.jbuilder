@@ -1,1 +1,0 @@
-json.array! @join_table_user_communication_means, partial: "join_table_user_communication_means/join_table_user_communication_mean", as: :join_table_user_communication_mean

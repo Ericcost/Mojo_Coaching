@@ -1,1 +1,0 @@
-json.partial! "join_table_user_communication_means/join_table_user_communication_mean", join_table_user_communication_mean: @join_table_user_communication_mean
