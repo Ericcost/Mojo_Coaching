@@ -38,6 +38,17 @@ RSpec.describe Availability, type: :model do
             end
         end
 
+        context "associations" do
+
+          describe "availabilities" do
+            it "should belongs to user" do
+              expect(@user.availabilities.include?(@availability)).to eq(true)
+            end
+          end
+  
+  
+      end
+
     end
 
 
