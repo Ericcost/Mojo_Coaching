@@ -10,7 +10,10 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6}
   
   has_many :coach_meetings, class_name: 'Meeting', foreign_key: 'coach_id'
+  has_many :coach_feedbacks, :through => :coach_meetings, :source => 'feedbacks'
+
   has_many :driver_meetings, class_name: 'Meeting', foreign_key: 'driver_id'
+  has_many :driver_feedbacks, :through => :driver_meetings, :source => 'feedbacks'
 
   has_many :join_table_user_com_means
   has_many :com_means, through: :join_table_user_com_means
@@ -20,9 +23,6 @@ class User < ApplicationRecord
 
   has_many :join_table_user_tracks
   has_many :tracks, through: :join_table_user_tracks
-
-  has_many :feedbacks, through: :coach_meetings
-  has_many :feedbacks, through: :driver_meetings
 
   has_many :availabilities
 
