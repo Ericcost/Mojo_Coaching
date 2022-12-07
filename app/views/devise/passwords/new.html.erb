@@ -1,42 +1,31 @@
 <div class="grid h-10  bg-base-300 rounded-box place-items-stretch">
-<div class="h-screen md:flex">
-	<div
-		class="relative overflow-hidden md:flex w-1/2 i justify-around items-center hidden "
-    style="background-image: url('https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') ;">
-		<div>
-			<h1 class="text-white font-bold text-4xl font-sans">Pas encore membre?</h1>
-			<p class="text-white mt-1">Trouve ton coach ou deviens celui d'un autre!</p>
-			<button  type="submit" class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"><a href="http://www.google.com">Acceuil</a></button>
-		</div>
+<form class="new_user" id="new_user" action="/users/password" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="SJogiM5tU73tgipwR9AHKhNK1vdhUDsobR2nNm8RkBFOJQsMIEICI3gaoLYFMwQ80vkF089t8EBapAMyTL75LA" autocomplete="off">
+  <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+      </div>
+      <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+        <div class="max-w-md mx-auto">
+          <div>
+            <h1 class="text-2xl font-semibold">Tu a oublié ton mot de passe? Ne t'en fais pas !</h1>
+          </div>
+          <div class="divide-y divide-gray-200">
+            <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+              <div class="relative">
+                <input autofocus="autofocus" autocomplete="off" id="user_email" value name="user[email]" type="email" class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" placeholder="" />
+                <label for="email" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
+              </div>
 
-	</div>
-	<div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
-		<form class="bg-white" action="/users/sign_in" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<h1 class="text-gray-800 font-bold text-2xl mb-1">Bonjour !</h1>
-			<p class="text-sm font-normal text-gray-600 mb-7">Bienvenue parmis nous !</p>
-					<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none"
-							viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-						</svg>
-						<input class="pl-2 border-none outline-none" type="email" name="user[email]" id="email"  placeholder="Adresse e-mail" />
+              <div class="relative action">
+                
+                <input class="bg-blue-500 text-white rounded-md px-2 py-1" type="submit" name="commit" value="Envoyer" data-disable-with="Send me reset password instructions">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-						<div class="flex items-center border-2 py-2 px-3 rounded-2xl">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
-								fill="currentColor">
-								<path fill-rule="evenodd"
-									d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-									clip-rule="evenodd" />
-							</svg>
-							<input class="pl-2 outline-none border-none" type="password" name="user[password]" id="password" placeholder="Password" />
-      </div>
-							<button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Connexion</button>
-              <input type="hidden" name="user[remember_me]" value="0" class="h-4 w-4 text-indigo-600 focus:ring-ind">
-              <input id="remember-me" name="user[remember_me]" value="1" type="checkbox" class="h-4 w-4 text-indigo">
-							<span for="remember_me" class="text-sm ml-2 hover:text-blue-500 cursor-pointer">Se souvenir de moi</span>
-		</form>
-	</div>
-</div>
+    </div>
+  </div>
+</form>
 </div>
