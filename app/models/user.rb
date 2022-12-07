@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  #validates
+
+  validates :email, presence: true, uniqueness: true, confirmation: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+.)+[a-z]{2,})\z/i, message: "only allows email format"}
+  validates :password, presence: true, length: {minimum: 6}
+  
   has_many :coach_meetings, class_name: 'Meeting', foreign_key: 'coach_id'
   has_many :driver_meetings, class_name: 'Meeting', foreign_key: 'driver_id'
 
