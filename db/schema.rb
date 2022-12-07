@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183817) do
     t.bigint "driver_id"
     t.bigint "availability_id"
     t.integer "duration"
-    t.string "reason"
+    t.integer "meeting_type"
     t.string "video_url"
     t.bigint "com_mean_id"
     t.bigint "car_id"
