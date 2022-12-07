@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @com_mean %>
+
+<div>
+  <%= link_to "Edit this com mean", edit_com_mean_path(@com_mean) %> |
+  <%= link_to "Back to com means", com_means_path %>
+
+  <%= button_to "Destroy this com mean", @com_mean, method: :delete %>
+</div>
