@@ -4,7 +4,6 @@ RSpec.describe Meeting, type: :model do
 
     before(:each) do
         @meeting = Meeting.create(coach_id: 1, driver_id: 2, availability_id: 1, reason: "first contact", com_mean_id: 1, track_id: 1, car_id: 1)
-        
     end
 
     context "validation" do
