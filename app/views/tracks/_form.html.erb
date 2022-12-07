@@ -1,0 +1,17 @@
+<%= form_with(model: track) do |form| %>
+  <% if track.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(track.errors.count, "error") %> prohibited this track from being saved:</h2>
+
+      <ul>
+        <% track.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
