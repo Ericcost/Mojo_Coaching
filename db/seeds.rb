@@ -43,5 +43,5 @@ end
 end
 
 10.times do
-  Feedback.create!(meeting_id: Meeting.all.sample.id, feedback: Faker::TvShows::RickAndMorty.quote)
+  Feedback.create!(meeting_id: Meeting.all.sample.id, content: Faker::TvShows::RickAndMorty.quote)
 end
