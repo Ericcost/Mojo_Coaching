@@ -39,9 +39,9 @@ end
 end
 
 10.times do
-  Meeting.create!(coach_id: User.all.sample.id, driver_id: User.all.sample.id, availability_id: Availability.all.sample.id, duration: 30, reason: Faker::Quote.yoda, video_url: Faker::Internet.url, com_mean_id: ComMean.all.sample.id, car_id: Car.all.sample.id, track_id: Track.all.sample.id)
+  Meeting.create!(coach_id: User.all.sample.id, driver_id: User.all.sample.id, availability_id: Availability.all.sample.id, duration: 30, meeting_type: rand(0..2), video_url: Faker::Internet.url, com_mean_id: ComMean.all.sample.id, car_id: Car.all.sample.id, track_id: Track.all.sample.id)
 end
 
 10.times do
-  Feedback.create!(meeting_id: Meeting.all.sample.id, feedback: Faker::TvShows::RickAndMorty.quote)
+  Feedback.create!(meeting_id: Meeting.all.sample.id, content: Faker::TvShows::RickAndMorty.quote)
 end

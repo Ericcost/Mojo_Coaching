@@ -1,14 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<div class="grid h-10 rounded-box place-items-stretch">
+  <div class="h-screen">
+      <div class="w-80 mt-24 m-auto lg:mt-16 max-w-sm">
+        <img src="https://image.freepik.com/free-vector/app-development-illustration_52683-47931.jpg" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
+        <div class="bg-white shadow-2xl rounded-b-3xl">
+          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6">Nom du coach</h2>
+          <div class="w-5/6 m-auto">
+            <p class="text-center text-gray-500 pt-5">Salut j'suis un bon coach prend des rdv pitié!</p>
+          </div>
+          <div class="grid grid-cols-4 w-72 lg:w-5/6 m-auto bg-indigo-50 mt-5 p-4 lg:p-4 rounded-2xl">
 
-<h1>Availabilities</h1>
-
-<div id="availabilities">
-  <% @availabilities.each do |availability| %>
-    <%= render availability %>
-    <p>
-      <%= link_to "Show this availability", availability %>
-    </p>
-  <% end %>
+          </div>
+          <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
+            <button classs="lg:text-sm text-lg font-bold">Mon profil</button>
+          </div>
+          <div class="text-center m-auto mt-6 w-full h-16">
+            <button class="text-gray-500 font-bold lg:text-sm hover:text-gray-900">Mes dispos</button>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
-
-<%= link_to "New availability", new_availability_path %>

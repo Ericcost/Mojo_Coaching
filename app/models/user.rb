@@ -5,20 +5,19 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
  
   has_many :coach_meetings, class_name: 'Meeting', foreign_key: 'coach_id'
+  has_many :coach_feedbacks, :through => :coach_meetings, :source => 'feedbacks'
+
   has_many :driver_meetings, class_name: 'Meeting', foreign_key: 'driver_id'
+  has_many :driver_feedbacks, :through => :driver_meetings, :source => 'feedbacks'
 
   has_many :join_table_user_com_means
   has_many :com_means, through: :join_table_user_com_means
 
   has_many :join_table_user_cars
   has_many :cars, through: :join_table_user_cars
-  has_many :meetings, through: :cars
 
   has_many :join_table_user_tracks
   has_many :tracks, through: :join_table_user_tracks
-  has_many :meetings, through: :tracks
-
-  has_many :feedbacks, through: :meetings
 
   has_many :availabilities
 

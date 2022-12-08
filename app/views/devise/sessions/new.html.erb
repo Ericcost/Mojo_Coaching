@@ -1,26 +1,38 @@
-<h2>Log in</h2>
+<div class="grid h-10  bg-base-300 rounded-box place-items-stretch">
+<div class="h-screen md:flex">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+	<div class="relative overflow-hidden md:flex w-1/2 i justify-around items-center hidden " style="background-image: url('https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') ;">
+    <div>
+			<h1 class="text-white font-bold text-4xl font-sans">Déjà membre?</h1>
+			<p class="text-white mt-1">Bon retour parmi nous!</p>
+			<button  type="submit" class="block w-28 bg-white text-indigo-800 mt-4 py-2 rounded-2xl font-bold mb-2"><a href="http://www.google.com">Acceuil</a></button>
+		</div>
+	</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+	<div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
+		<form class="bg-white" action="/users/sign_in" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<h1 class="text-gray-800 font-bold text-2xl mb-1">Connecte toi à ton compte :</h1>
+			<p class="text-sm font-normal text-gray-600 mb-7">Log in to your account:</p>
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+        </svg>
+        <input class="pl-2 border-none outline-none" type="email" name="user[email]" id="email"  placeholder="Adresse e-mail" />
+      </div>
+      <div class="flex items-center border-2 py-2 px-3 rounded-2xl">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+        </svg>
+        <input class="pl-2 outline-none border-none" type="password" name="user[password]" id="password" placeholder="Password" />
+      </div>
+        <button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Connexion</button>
+        <input type="hidden" name="user[remember_me]" value="0" class="h-4 w-4 text-indigo-600 focus:ring-ind">
+        <input id="remember-me" name="user[remember_me]" value="1" type="checkbox" class="h-4 w-4 text-indigo">
+        <span for="remember_me" class="text-sm ml-2 hover:text-blue-500 cursor-pointer">Se souvenir de moi</span>
+        <a href="/users/password/new" class="text-sm ml-2 font-semibold">Mot de passe oublié?</a>
+		</form>
+	</div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+</div>
