@@ -467,12 +467,16 @@
         <div class="right-side">
           <div class="nav">
             <ul>
-              <% unless my_profile? %>
+              <% unless my_profile? && @user_availabilities.empty? %>
                 <li onclick="tabs(0)" class="user-post">Disponibilités</li>
               <% end %>
-              <li onclick="tabs(1)" class="user-post">Circuits</li>
-              <li onclick="tabs(2)" class="user-review">Voitures</li>
-              <li onclick="tabs(3)" class="user-setting">Palmarès</li>
+              <% unless @user_tracks_as_coach.empty? && @user_tracks_as_driver.empty? %>
+                <li onclick="tabs(1)" class="user-post">Circuits</li>
+              <% end %>
+              <% unless @user_cars_as_coach.empty? && @user_cars_as_driver.empty? %>
+                <li onclick="tabs(2)" class="user-review">Voitures</li>
+              <% end %>
+                <li onclick="tabs(3)" class="user-setting">Palmarès</li>
               <% if my_profile? %>
                 <li onclick="tabs(4)" class="user-setting">Meetings</li>
               <% end %>
@@ -482,19 +486,21 @@
           <div class="profile-body">
 
             <% unless my_profile? %>
-              <div class="profile-settings tab">
-                <div class="account-setting">
-                  <h1>Disponibilités</h1>
-                    <% @user_availabilities.each do |availability|%>
-                      <p><%= availability.start_date %></p>
-                      <%= button_to "Voir cette disponibilité", root_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
-                    <% end %>
+              <% unless @user_availabilities.empty? %>
+                <div class="profile-settings tab">
+                  <div class="account-setting">
+                    <h1>Disponibilités</h1>
+                      <% @user_availabilities.each do |availability|%>
+                        <p><%= availability.start_date %></p>
+                        <%= button_to "Voir cette disponibilité", root_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
+                      <% end %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
 
             <div class="profile-posts tab">
-              <% if @user_tracks_as_coach %>
+              <% unless @user_tracks_as_coach.empty? %>
                 <h1>Mes circuits en tant que coach :</h1>
                   <% @user_tracks_as_coach.each do |track| %>
                     <div class="container-card">
@@ -510,7 +516,7 @@
                     </div>
                   <% end %>
               <% end %>
-              <% if @user_tracks_as_driver %>
+              <% unless @user_tracks_as_driver.empty? %>
                 <h1>Mes circuits en tant que driver :</h1>
                   <% @user_tracks_as_driver.each do |track|%>
                     <div class="container-card">
@@ -530,7 +536,7 @@
 
 
             <div class="profile-reviews tab">
-              <% if @user_cars_as_coach %>
+              <% unless @user_cars_as_coach.empty? %>
                 <h1>Mes voitures en tant que coach :</h1>
                   <% @user_cars_as_coach.each do |car| %>
                     <div class="container-card">
@@ -545,7 +551,7 @@
                     </div>
                   <% end %>
               <% end %>
-              <% if @user_cars_as_driver %>
+              <% unless @user_cars_as_driver.empty? %>
                 <h1>Mes voitures en tant que driver :</h1>
                   <% @user_cars_as_driver.each do |car|%>
                     <div class="container-card">
