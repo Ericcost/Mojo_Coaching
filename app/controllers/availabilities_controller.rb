@@ -3,11 +3,13 @@ class AvailabilitiesController < ApplicationController
 
   # GET /availabilities or /availabilities.json
   def index
+    @coachs = coachs
     @availabilities = Availability.all
   end
 
   # GET /availabilities/1 or /availabilities/1.json
   def show
+    
   end
 
   # GET /availabilities/new
