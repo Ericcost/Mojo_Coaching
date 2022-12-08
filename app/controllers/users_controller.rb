@@ -8,6 +8,13 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @user_tracks_as_coach = my_tracks_as_coach
+    @user_tracks_as_driver = my_tracks_as_driver
+    @user_cars_as_coach = my_cars_as_coach
+    @user_cars_as_driver = my_cars_as_driver
+    @user_meetings_as_coach = my_meetings_as_coach
+    @user_meetings_as_driver = my_meetings_as_driver
+    @user_availabilities = my_availabilities_as_coach
   end
 
   # GET /users/new
@@ -17,6 +24,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    set_user
   end
 
   # POST /users or /users.json
