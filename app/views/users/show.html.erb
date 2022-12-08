@@ -1,14 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
-
   <style>
     @import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
     @import url("https://fonts.googleapis.com/css?family=Bree+Serif&display=swap");
@@ -441,27 +430,21 @@
           />
         </div>
         <div class="profile-nav-info">
-          <h3 class="user-name">Sébastien Loeb</h3>
-          <div class="address">
-            <p id="state" class="state">Givrins,</p>
-            <span id="country" class="country">Suisse.</span>
-          </div>
+          <h3 class="user-name"><%= @user.first_name + " " + @user.last_name %></h3>
         </div>
-        <div class="profile-option">
-              <button class="createbtn" id="Create-post">
-                <i class="fa fa-plus"></i>Edier le profil
-              </button>
-          </div>
-        </div> 
+          <% if current_user %>
+            <% if my_profile? %>
+              <div class="profile-option">
+                  <%= button_to "Éditer le profil", edit_user_path(@user), method: :get, class: "createbtn" %>
+                  <%= button_to "Proposer un coaching", new_availability_path, method: :get, class: "createbtn" %>
+              </div>
+            <% end %>
+          <% end %>
       </div>
 
       <div class="main-bd">
         <div class="left-side">
           <div class="profile-side">
-            <p class="mobile-no"><i class="fa fa-phone"></i> +23470xxxxx700</p>
-            <p class="user-mail">
-              <i class="fa fa-envelope"></i> Brightisaac80@gmail.com
-            </p>
             <div class="user-bio">
               <h3>Bio</h3>
               <p class="bio">
@@ -471,162 +454,140 @@
                 amet!
               </p>
             </div>
-            <div class="profile-btn">
-              <button class="createbtn" id="Create-post">
-                <i class="fa fa-plus"></i>Booker une session
-              </button>
-            </div>
-            <div class="user-rating">
-              <h3 class="rating">4.5</h3>
-              <div class="rate">
-                <div class="star-outer">
-                  <div class="star-inner">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                  </div>
+            <% if current_user %>
+              <% unless my_profile? %>
+                <div class="profile-btn">
+                  <%= button_to "Réserver une session", new_meeting_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
+                  <%= button_to "Retour à l'index", root_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
                 </div>
-                <span class="no-of-user-rate"
-                  ><span>123</span>&nbsp;&nbsp;reviews</span
-                >
-              </div>
-            </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
         <div class="right-side">
           <div class="nav">
             <ul>
-              <li onclick="tabs(0)" class="user-post">Circuits</li>
-              <li onclick="tabs(1)" class="user-review">Voitures</li>
-              <li onclick="tabs(2)" class="user-setting">Palmarès</li>
-              <li onclick="tabs(3)" class="user-setting">Meetings</li>
-              <li onclick="tabs(4)" class="user-setting">Avis</li>
+              <% unless my_profile? %>
+                <li onclick="tabs(0)" class="user-post">Disponibilités</li>
+              <% end %>
+              <li onclick="tabs(1)" class="user-post">Circuits</li>
+              <li onclick="tabs(2)" class="user-review">Voitures</li>
+              <li onclick="tabs(3)" class="user-setting">Palmarès</li>
+              <% if my_profile? %>
+                <li onclick="tabs(4)" class="user-setting">Meetings</li>
+              <% end %>
             </ul>
           </div>
+
           <div class="profile-body">
-            <div class="profile-posts tab">
-              <h1>Circuits Fréquentés</h1>
-              <div class="container-card">
-                <div class="card">
-                  <div
-                    class="card-bg"
-                    style="
-                      background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');
-                    "
-                  >
-                    <div class="content">
-                      <p class="card-categories">categorie</p>
-                      <h3 class="card'heading">Circuit du Mans</h3>
-                    </div>
-                  </div>
-                </div>
-                <!-- <div class="card">
-                  <div
-                    class="card-bg"
-                    style="
-                      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtNli4xOKkV0IV-zBg-ztZtA9TPLY9ZAWEPQ&usqp=CAU');
-                    "
-                  >
-                    <div class="content">
-                      <p class="card-categories">categorie</p>
-                      <h3 class="card'heading">Circuit du Castellet</h3>
-                    </div>
-                  </div>
-                </div> -->
-                <div class="card">
-                  <div
-                    class="card-bg"
-                    style="
-                      background-image: url('https://www.nievre-tourisme.com/uploads/2021/03/course-fun-circuit-magny-cours-frc-1600x900.jpg');
-                    "
-                  >
-                    <div class="content">
-                      <p class="card-categories">categorie</p>
-                      <h3 class="card'heading">Circuit du Nievre</h3>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div
-                    class="card-bg"
-                    style="
-                      background-image: url('https://admin.circuit-albi.fr//storage/uploads/2021/05/12/609b9ddb02df2Ecole_pilotage.jpg');
-                    "
-                  >
-                    <div class="content">
-                      <p class="card-categories">categorie</p>
-                      <h3 class="card'heading">Circuit d'Albi</h3>
-                    </div>
-                  </div>
+
+            <% unless my_profile? %>
+              <div class="profile-settings tab">
+                <div class="account-setting">
+                  <h1>Disponibilités</h1>
+                    <% @user_availabilities.each do |availability|%>
+                      <p><%= availability.start_date %></p>
+                      <%= button_to "Voir cette disponibilité", root_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
+                    <% end %>
                 </div>
               </div>
+            <% end %>
+
+            <div class="profile-posts tab">
+              <% if @user_tracks_as_coach %>
+                <h1>Mes circuits en tant que coach :</h1>
+                  <% @user_tracks_as_coach.each do |track| %>
+                    <div class="container-card">
+                      <div class="card">
+                        <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
+                          <div class="content">
+                            <p class="card-categories"><%= track.country %></p>
+                            <h3 class="card'heading"><%= track.city %></h3>
+                            <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+              <% end %>
+              <% if @user_tracks_as_driver %>
+                <h1>Mes circuits en tant que driver :</h1>
+                  <% @user_tracks_as_driver.each do |track|%>
+                    <div class="container-card">
+                      <div class="card">
+                        <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
+                          <div class="content">
+                            <p class="card-categories"><%= track.country %></p>
+                            <h3 class="card'heading"><%= track.city %></h3>
+                            <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+              <% end %>
             </div>
+
+
             <div class="profile-reviews tab">
-              <h1>Voitures Utilisées</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Aliquam pariatur officia, aperiam quidem quasi, tenetur
-                molestiae. Architecto mollitia laborum possimus iste esse.
-                Perferendis tempora consectetur, quae qui nihil voluptas.
-                Maiores debitis repellendus excepturi quisquam temporibus quam
-                nobis voluptatem, reiciendis distinctio deserunt vitae! Maxime
-                provident, distinctio animi commodi nemo, eveniet fugit porro
-                quos nesciunt quidem a, corporis nisi dolorum minus sit eaque
-                error sequi ullam. Quidem ut fugiat, praesentium velit aliquam!
-              </p>
+              <% if @user_cars_as_coach %>
+                <h1>Mes voitures en tant que coach :</h1>
+                  <% @user_cars_as_coach.each do |car| %>
+                    <div class="container-card">
+                      <div class="card">
+                        <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
+                          <div class="content">
+                            <h3 class="card'heading"><%= car.model %></h3>
+                            <%= button_to "Voir cette voiture", car_path(car.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+              <% end %>
+              <% if @user_cars_as_driver %>
+                <h1>Mes voitures en tant que driver :</h1>
+                  <% @user_cars_as_driver.each do |car|%>
+                    <div class="container-card">
+                      <div class="card">
+                        <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
+                          <div class="content">
+                            <h3 class="card'heading"><%= car.model %></h3>
+                            <%= button_to "Voir cette voiture", car_path(car.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+              <% end %>
             </div>
+
             <div class="profile-settings tab">
               <div class="account-setting">
                 <h1>Palmarès</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Reprehenderit omnis eaque, expedita nostrum, facere libero
-                  provident laudantium. Quis, hic doloribus! Laboriosam nemo
-                  tempora praesentium. Culpa quo velit omnis, debitis maxime,
-                  sequi animi dolores commodi odio placeat, magnam, cupiditate
-                  facilis impedit veniam? Soluta aliquam excepturi illum natus
-                  adipisci ipsum quo, voluptatem, nemo, commodi, molestiae
-                  doloribus magni et. Cum, saepe enim quam voluptatum vel
-                  debitis nihil, recusandae, omnis officiis tenetur, ullam
-                  rerum.
-                </p>
+                <p><%= @user.awards %></p>
               </div>
             </div>
-            <div class="profile-settings tab">
-              <div class="account-setting">
-                <h1>Meetings</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-                  sit tempore atque facere eveniet natus, veniam accusantium
-                  error voluptates dignissimos soluta eaque architecto illo?
-                  Animi sunt dolorem blanditiis, commodi sint in eius iusto sed
-                  magni dicta rem debitis perferendis explicabo mollitia? Natus
-                  cumque aperiam fugit sint, dicta, facilis expedita soluta
-                  dolor nulla quasi inventore cupiditate et neque eaque omnis
-                  iure perferendis deserunt nesciunt doloremque repellendus
-                  dignissimos nemo quisquam laudantium. Quidem, eius maxime
-                  mollitia sed rem ducimus corporis doloribus laudantium
-                  suscipit.
-                </p>
+
+            <% if my_profile? %>
+              <div class="profile-settings tab">
+                <div class="account-setting">
+                  <h1>Mes meetings en tant que coach</h1>
+                    <% @user_meetings_as_coach.each do |coach_meeting|%>
+                      <p><%= coach_meeting.meeting_type %></p>
+                      <%= button_to "Voir ce meeting", meeting_path(coach_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                    <% end %>
+                </div>
+                <div class="account-setting">
+                  <h1>Mes meetings en tant que driver</h1>
+                    <% @user_meetings_as_driver.each do |driver_meeting|%>
+                      <p><%= driver_meeting.meeting_type %></p>
+                      <%= button_to "Voir ce meeting", meeting_path(driver_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                    <% end %>
+                </div>
               </div>
-            </div>
-            <div class="profile-settings tab">
-              <div class="account-setting">
-                <h1>Avis</h1>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Commodi suscipit, natus laboriosam quos veniam molestias illo
-                  at error, porro perspiciatis repellendus sit veritatis.
-                  Veritatis velit enim pariatur quidem tempora eveniet fuga at
-                  reiciendis error minus eius porro similique, commodi minima
-                  nihil natus odio sunt inventore unde in tempore! Ipsum dolor
-                  voluptates nulla placeat similique sunt voluptatem nemo
-                  repellat saepe. Maiores perferendis quaerat corrupti non nisi.
-                </p>
-              </div>
-            </div>
+            <% end %>
+
           </div>
         </div>
       </div>
