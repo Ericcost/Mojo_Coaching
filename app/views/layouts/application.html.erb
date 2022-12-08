@@ -26,6 +26,9 @@
                 <li><%= link_to "Accueil", root_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
                 <li><%= link_to "Les voitures", cars_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
                 <li><%= link_to "Les circuits", tracks_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
+              <% if current_user %>
+                <li><%= link_to "Proposer un coaching", new_availability_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
+              <% end %>
               <% unless current_user %>
                 <li><%= link_to "Se connecter", new_user_session_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
                 <li><%= link_to "S'inscrire", new_user_registration_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
