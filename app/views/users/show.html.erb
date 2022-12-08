@@ -472,9 +472,7 @@
               </p>
             </div>
             <div class="profile-btn">
-              <button class="createbtn" id="Create-post">
-                <i class="fa fa-plus"></i>Booker une session
-              </button>
+              <%= button_to "Booker une session", new_meeting_path, method: :get, class: "createbtn", id: "Create-post"%>
             </div>
             <div class="user-rating">
               <h3 class="rating">4.5</h3>
