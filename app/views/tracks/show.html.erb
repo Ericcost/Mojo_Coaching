@@ -8,3 +8,21 @@
 
   <%= button_to "Destroy this track", @track, method: :delete %>
 </div>
+
+<div class="grid h-10 rounded-box place-items-stretch">
+  <div class="h-screen">
+      <div class="w-80 mt-24 m-auto lg:mt-16 max-w-sm">
+        <img src="https://image.freepik.com/free-vector/app-development-illustration_52683-47931.jpg" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
+        <div class="bg-white shadow-2xl rounded-b-3xl">
+          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= @track.country %></h2>
+          <h3 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= @track.city %></h2>
+          <h3 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= @track.length %></h2>
+          <div class="w-5/6 m-auto">
+            <p class="text-center text-gray-500 pt-5">Salut j'suis un bon coach prend des rdv pitié!</p>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+
