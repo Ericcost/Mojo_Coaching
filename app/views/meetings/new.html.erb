@@ -4,6 +4,50 @@
 
 <br>
 
+<div class="form-group">
+  <%# <%= form.label :meeting_id, class: 'mb-2' %>
+  <%# <%= form.select :meeting_id, options_for_select(Meeting.all.map {|meeting| [meeting_type, meeting.id]}, selected: meeting.id),
+    {prompt: 'Select meeting type'}, { class: 'form-select form-select-lg rounded-0' } %>
+  <%# <% end %>
+</div>
+
+
+<div class="field">
+  <%# <%= f.label :video_url %><br /> %>
+  <%# <%= f.video_url_field :video_url, autofocus: true, autocomplete: "video url" %> %>
+</div>
+
+<div class="form-group">
+  <%# <%= form.label :car_id, class: 'mb-2' %> %>
+  <%# <%= form.select :car_id, options_for_select(Car.all.map {|car| [car, car.id]}, selected: car.id), %>
+    <%# {prompt: 'Select car'}, { class: 'form-select form-select-lg rounded-0' } %> %>
+  <%# <% end %> %>
+</div>
+
+<div class="form-group">
+  <%# <%= form.label :track_id, class: 'mb-2' %> %>
+  <%# <%= form.select :track_id, options_for_select(Track.all.map {|track| [track, track.id]}, selected: track.id), %>
+    <%# {prompt: 'Select track'}, { class: 'form-select form-select-lg rounded-0' } %> %>
+  <%# <% end %> %>
+</div>
+
+<div class="form-group">
+  <%# <%= form.label :com_mean_id, class: 'mb-2' %> %>
+  <%# <%= form.select :com_mean_id, options_for_select(ComMean.all.map {|com_mean| [com_mean, com_mean.id]}, selected: com_mean.id), %>
+    <%# {prompt: 'Select communication method'}, { class: 'form-select form-select-lg rounded-0' } %> %>
+  <%# <% end %> %>
+</div>
+
+<div class="form-group">
+  <%# <%= form.label :availability_id, class: 'mb-2' %> %>
+  <%# <%= form.select :availability_id, options_for_select(Availability.all.map {|availability| [availability, availability.id]}, selected: availability.id), %>
+    <%# {prompt: 'Select availability'}, { class: 'form-select form-select-lg rounded-0' } %> %>
+  <%# <% end %> %>
+</div>
+
+
+
+
 <div>
   <%= link_to "Back to meetings", meetings_path %>
 </div>
