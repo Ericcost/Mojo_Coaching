@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @meeting %>
-
-<div>
-  <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> |
-  <%= link_to "Back to meetings", meetings_path %>
-
-  <%= button_to "Destroy this meeting", @meeting, method: :delete %>
+<div class="flex justify-center">
+  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+    <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">Votre session de coaching a bien été validée</h5>
+    <%= button_to "Revenir à la page d'acceuil", availabilities_path, method: :get, type: "button", class: "inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" %>
+  </div>
 </div>
