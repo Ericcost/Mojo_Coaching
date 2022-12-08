@@ -31,7 +31,7 @@ RSpec.describe Availability, type: :model do
         end
 
         describe "#duration" do
-          it "should not be valid with a wrong start_date format entrance" do
+          it "should not be valid with a wrong duration format entrance" do
             bad_availability = Availability.create(user_id: @user.id, start_date: @availability.start_date, duration: "string")
             expect(bad_availability).not_to be_valid
             expect(bad_availability.errors.include?(:duration)).to eq(true)
