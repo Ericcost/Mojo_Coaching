@@ -447,11 +447,13 @@
             <span id="country" class="country">Suisse.</span>
           </div>
         </div>
-        <div class="profile-option">
-              <button class="createbtn" id="Create-post">
-                <i class="fa fa-plus"></i>Edier le profil
-              </button>
-          </div>
+        <% if current_user %>
+          <% if my_profile? %>
+            <div class="profile-option">
+                <%= button_to "Éditer le profil", edit_user_path(@user), method: :get, class: "createbtn" %>
+            </div>
+          <% end %>
+        <% end %>
         </div> 
       </div>
 
