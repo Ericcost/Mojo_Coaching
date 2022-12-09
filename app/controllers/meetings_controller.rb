@@ -12,6 +12,8 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/new
   def new
+    @coach = meeting_coach
+    @driver = current_user
     @meeting = Meeting.new
   end
 
@@ -21,7 +23,17 @@ class MeetingsController < ApplicationController
 
   # POST /meetings or /meetings.json
   def create
-    @meeting = Meeting.new(meeting_params)
+    @meeting = Meeting.new(
+      coach_id: @coach.id,
+      driver_id: current_user.id,
+      availability_id: params[:availability_id],
+      duration: 30,
+      meeting_type: params[:meeting_type],
+      video_url: params[:password],
+      com_mean_id: params[:com_mean_id],
+      car_id: params[:car_id],
+      track_id: params[:track_id],
+    )
 
     respond_to do |format|
       if @meeting.save

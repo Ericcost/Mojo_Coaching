@@ -12,115 +12,57 @@
         <div class="mt-10">
           <form action="#">
 
-            <div class="flex flex-col mb-6">
-              <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">Disponibilités</label>
-              <div class="relative">
-                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                  <span>
-                    <i class="fas fa-lock text-blue-500"></i>
-                  </span>
-                </div>
-                <input id="password" type="" name="password" class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder=""/>
-              </div>
+        <div class="flex flex-col mb-6">
+          <div class="relative">
+            <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+              <span>
+                <i class="fas fa-lock text-blue-500"></i>
+              </span>
             </div>
-
-            <div class="flex flex-col mb-6">
-              <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">Type de réunion</label>
-              <div class="relative">
-                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                  <span>
-                    <i class="fas fa-lock text-blue-500"></i>
-                  </span>
-                </div>
-                <input id="password" type="" name="password" class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder=""/>
-              </div>
-            </div>
-
-            <div class="flex flex-col mb-6">
-              <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">Video url</label>
-              <div class="relative">
-                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                  <span>
-                    <i class="fas fa-lock text-blue-500"></i>
-                  </span>
-                </div>
-                <input id="password" type="" name="password" class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder=""/>
-              </div>
-            </div>
-
-            <div class="flex flex-col mb-6">
-              <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">Choix de la voiture</label>
-              <div class="relative">
-                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                  <span>
-                    <i class="fas fa-lock text-blue-500"></i>
-                  </span>
-                </div>
-                <input id="password" type="" name="password" class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder=""/>
-              </div>
-            </div>
-
-            <div class="flex flex-col mb-6">
-              <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">Circuits</label>
-              <div class="relative">
-                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                  <span>
-                    <i class="fas fa-lock text-blue-500"></i>
-                  </span>
-                </div>
-                <input id="password" type="" name="password" class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder=""/>
-              </div>
-            </div>
-
-
-            <div class="flex flex-col mb-6">
-              <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">Communication</label>
-              <div class="relative">
-                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                  <span>
-                    <i class="fas fa-lock text-blue-500"></i>
-                  </span>
-                </div>
-                <input id="password" type="" name="password" class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder=""/>
-              </div>
-            </div>
-
-
-            <div class="flex w-full">
-              <button type="submit" class="flex mt-2 items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-blue-500 hover:bg-blue-600 rounded-2xl py-2 w-full transition duration-150 ease-in">
-                <span class="mr-2 uppercase">Créez votre rendez-vous</span>
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
+        
+            <%= form_with model: @meeting, method: :post do |f|%>
+              
+              <div class="form-group">
+                <%= f.label :availability, class: 'mb-2' %>
+                <%= f.select :availability, options_for_select(Availability.where(user_id: @coach.id)), {prompt: 'Indiquez vos disponibilités'} %>
+              </div>
+                
+              <div class="form-group">
+                <%= f.label :meeting_type, class: 'mb-2' %>
+                <%= f.select :meeting_type, options_for_select(Meeting.meeting_types), {prompt: 'Select meeting type'} %>
+              </div>
 
-<%= form_with do |f|%>
+              <div class="flex flex-col mb-6">
+                <label for="password" class="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">Video url</label>
+                <div class="relative">
+                  <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
+                    <span>
+                      <i class="fas fa-lock text-blue-500"></i>
+                    </span>
+                  </div>
+                  <input id="password" type="" name="password" class="text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Lien de votre vidéo ici"/>
+                </div>
+              </div>
 
-  <div class="form-group">
-    <%= f.label :availability_id, class: 'mb-2' %>
-    <%= f.select :availability_id, options_for_select(Availability.where(user_id: @coach.id).map {|availability| [availability, availability.id]}, selected: availability.id),
-      {prompt: ''} %>
-  </div>
+              <div class="form-group">
+                <%= f.label :car_id, class: 'mb-2' %>
+                <%= f.select :car_id, options_for_select(JoinTableUserCar.where(user_id: @coach.id, is_coach: true)), {prompt: ''} %>
+              </div>
 
-  <div class="form-group">
-    <%= f.label :meeting_type, class: 'mb-2' %>
-    <%= f.select :meeting_type, options_for_select(Meeting.meeting_types), {prompt: 'Select meeting type'} %>
-  </div>
+              <div class="form-group">
+                <%= f.label :track_id, class: 'mb-2' %>
+                <%= f.select :track_id, options_for_select(JoinTableUserTrack.where(user_id: @coach.id, is_coach: true)), {prompt: ''} %>
+              </div>
 
-  <div class="field">
-    <%= f.label :video_url %><br />
-    <%= f.url_field :video_url, autofocus: true, autocomplete: "video url" %>
-  </div>
-
-  <div class="form-group">
-  <%= f.label :car_id, class: 'mb-2' %>
-  <%= f.select :car_id, options_for_select(Car.all.map {|car| [car, car.id]}, selected: car.id), {prompt: 'Select car'} %>
-  </div>
-
-<% end %>
-
+              <div class="form-group">
+                <%= f.label :com_mean_id, class: 'mb-2' %>
+                <%= f.select :com_mean_id, options_for_select(JoinTableUserComMean.where(user_id: @coach.id).each {|com_mean| ComMean.find(com_mean.id).communication_mean}), {prompt: ''} %>
+              </div>
+              
+              <%= f.submit %>
+            <% end %>
 
 
 
