@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-      resources :users
-      resources :availabilities
-      resources :cars
-      resources :com_means
-      resources :feedbacks
-      resources :join_table_user_cars
-      resources :join_table_user_com_means
-      resources :join_table_user_tracks
-      resources :meetings
-      resources :tracks
-
-      root to: "users#index"
-    end
   resources :join_table_user_com_means
   resources :com_means
   resources :join_table_user_cars
