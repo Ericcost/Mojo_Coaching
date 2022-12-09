@@ -1,43 +1,41 @@
-<br>
+<%= form_with url: meetings_path do |f| %>
 
-  <%= form_with url: meetings_path do |f|%>
-
-    <div class="form-group">
-      <%= f.hidden_field :coach_id, value: @coach.id %>
-    </div>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.hidden_field :coach_id, value: @coach.id %>
+  </div>
+  
+  <div class="form-group flex flex-col mb-6">
+    <%= f.label :Disponibilité, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
+    <%= f.select :availability_id, options_for_select(@coach_availabilities.collect{ |availability| [availability.start_date, availability.id] }), class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis une disponibilité" %>
+  </div>
     
-    <div class="form-group">
-      <%= f.label :availability_id, class: 'mb-2' %>
-      <%= f.select :availability_id, options_for_select(@coach_availabilities.collect{ |availability| [availability.start_date, availability.id] }), {prompt: 'Indiquez vos disponibilités'} %>
-    </div>
-      
-    <div class="form-group">
-      <%= f.label :meeting_type, class: 'mb-2' %>
-      <%= f.select :meeting_type, options_for_select(Meeting.meeting_types), {prompt: 'Select meeting type'} %>
-    </div>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.label :Type_de_rendez_vous, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
+    <%= f.select :meeting_type, options_for_select(Meeting.meeting_types), class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis un type de rendez-vous" %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :video_url, class: 'mb-2' %>
-      <%= f.text_field :video_url %>
-    </div>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.label :URL_de_la_vidéo, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
+    <%= f.text_field :video_url, class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Poste le lien de ta vidéo" %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :car, class: 'mb-2' %>
-      <%= f.select :car, options_for_select(@coach_cars.collect{ |car| [car.model, car.id] }), {prompt: ''} %>
-    </div>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.label :Voiture, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
+    <%= f.select :car, options_for_select(@coach_cars.collect{ |car| [car.model, car.id] }), class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis une voiture" %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :track, class: 'mb-2' %>
-      <%= f.select :track, options_for_select(@coach_tracks.collect{ |track| [track.city, track.id] }), {prompt: ''} %>
-    </div>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.label :Circuit, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
+    <%= f.select :track, options_for_select(@coach_tracks.collect{ |track| [track.city, track.id] }), class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis un circuit" %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :com_mean, class: 'mb-2' %>
-      <%= f.select :com_mean, options_for_select(@coach_com_means.collect{ |commean| [commean.communication_mean, commean.id] }), {prompt: ''} %>
-    </div>
-    
-    <%= f.submit %>
-  <% end %>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.label :Moyen_de_communication, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
+    <%= f.select :com_mean, options_for_select(@coach_com_means.collect{ |commean| [commean.communication_mean, commean.id] }), class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis un moyen de communicaton" %>
+  </div>
+  
+  <%= f.submit %>
+<% end %>
 
 <div>
   <%= link_to "Back to meetings", meetings_path %>
