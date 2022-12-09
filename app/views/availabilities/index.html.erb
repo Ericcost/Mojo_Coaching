@@ -15,7 +15,7 @@
             <%= button_to "Mon profil et mes dispos", user_path(coach.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
           </div>
           <div class="text-center m-auto mt-6 w-full h-16">
-            <%= button_to "Prendre RDV", new_meeting_path, method: :get, class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+            <%= button_to "Prendre RDV", new_meeting_path, method: :get, params: {coach_id: coach.id}, class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
         </div>
       </div>
       <% end %>

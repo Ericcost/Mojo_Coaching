@@ -22,19 +22,19 @@ end
   ComMean.create!(communication_mean: ["téléphone", "email", "Rendez-vous", "Pigeon voyageur", "Signaux de fumée"].sample)
 end
 
-10.times do
+100.times do
   JoinTableUserComMean.create!(user_id: User.all.sample.id, com_mean_id: ComMean.all.sample.id)
 end
 
-10.times do
+100.times do
   JoinTableUserCar.create!(user_id: User.all.sample.id, car_id: Car.all.sample.id, is_coach: true, is_driver: true)
 end
 
-10.times do
+100.times do
   JoinTableUserTrack.create!(user_id: User.all.sample.id, track_id: Track.all.sample.id, is_coach: true, is_driver: true)
 end
 
-10.times do
+100.times do
   Availability.create!(user_id: User.all.sample.id, start_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 365))
 end
 

@@ -1,8 +1,43 @@
-<h1>New meeting</h1>
-
-<%= render "form", meeting: @meeting %>
-
 <br>
+
+  <%= form_with url: meetings_path do |f|%>
+
+    <div class="form-group">
+      <%= f.hidden_field :coach_id, value: @coach.id %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :availability_id, class: 'mb-2' %>
+      <%= f.select :availability_id, options_for_select(@coach_availabilities.collect{ |availability| [availability.start_date, availability.id] }), {prompt: 'Indiquez vos disponibilités'} %>
+    </div>
+      
+    <div class="form-group">
+      <%= f.label :meeting_type, class: 'mb-2' %>
+      <%= f.select :meeting_type, options_for_select(Meeting.meeting_types), {prompt: 'Select meeting type'} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :video_url, class: 'mb-2' %>
+      <%= f.text_field :video_url %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :car, class: 'mb-2' %>
+      <%= f.select :car, options_for_select(@coach_cars.collect{ |car| [car.model, car.id] }), {prompt: ''} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :track, class: 'mb-2' %>
+      <%= f.select :track, options_for_select(@coach_tracks.collect{ |track| [track.city, track.id] }), {prompt: ''} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :com_mean, class: 'mb-2' %>
+      <%= f.select :com_mean, options_for_select(@coach_com_means.collect{ |commean| [commean.communication_mean, commean.id] }), {prompt: ''} %>
+    </div>
+    
+    <%= f.submit %>
+  <% end %>
 
 <div>
   <%= link_to "Back to meetings", meetings_path %>
