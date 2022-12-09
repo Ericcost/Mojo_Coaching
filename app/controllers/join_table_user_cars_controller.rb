@@ -21,31 +21,25 @@ class JoinTableUserCarsController < ApplicationController
 
   # POST /join_table_user_cars or /join_table_user_cars.json
   def create
-    puts "bonjour"
-    puts params
-    puts "bonjour"
-    @join_table_user_car = JoinTableUserCar.new(user_id: current_user.id, car_id: params[:car_id], is_driver: params[:is_driver], is_coach: params[:is_coach])
-    puts "bonjour"
-    puts params
-    puts "bonjour"
+    @new_join_table_user_car = JoinTableUserCar.new(user_id: current_user.id, car_id: params[:car_id], is_driver: params[:is_driver], is_coach: params[:is_coach])
+    
     respond_to do |format|
-      if @join_table_user_car.save
-        format.html { redirect_to join_table_user_car_url(@join_table_user_car), notice: "Join table user car was successfully created." }
-        format.json { render :show, status: :created, location: @join_table_user_car }
+      if @new_join_table_user_car.save
+        format.html { redirect_to cars_path, notice: "Join table user car was successfully created." }
+        format.json { render :show, status: :created, location: @new_join_table_user_car }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @join_table_user_car.errors, status: :unprocessable_entity }
+        format.json { render json: @new_join_table_user_car.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /join_table_user_cars/1 or /join_table_user_cars/1.json
-  def update
-    @join_table_user_car = JoinTableUserCar.update(user_id: current_user.id, car_id: params[:car_id], is_driver: params[:is_driver], is_coach: params[:is_coach])
+  def update    
     respond_to do |format|
-      if @join_table_user_car.update(join_table_user_car_params)
-        format.html { redirect_to join_table_user_car_url(@join_table_user_car), notice: "Join table user car was successfully updated." }
-        format.json { render :show, status: :ok, location: @join_table_user_car }
+      if @join_table_user_car.update(is_driver: params[:is_driver], is_coach: params[:is_coach])
+        format.html { redirect_to cars_path, notice: "Join table user car was successfully updated." }
+        format.json { render :show, status: :ok, location: @join_table_user_car}
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @join_table_user_car.errors, status: :unprocessable_entity }
