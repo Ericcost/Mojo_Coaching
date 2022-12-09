@@ -1,7 +1,7 @@
 <div class="grid h-10  bg-base-300 rounded-box place-items-stretch">
 <div class="h-screen md:flex">
 	<div
-		class="relative overflow-hidden md:flex w-1/2 i justify-around items-center hidden bg-cover "
+		class="grid  relative overflow-hidden md:flex w-1/2 i justify-around items-center hidden bg-cover "
     style="background-image: url('https://images.pexels.com/photos/11685541/pexels-photo-11685541.jpeg?auto=compress&cs=tinysrgb&w=600') ;">
 		<div>
 			<h1 class="text-white font-bold text-4xl font-sans">Mojo-coaching</h1>
@@ -10,7 +10,7 @@
 		</div>
 
 	</div>
-	<div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
+	<div class="grid  flex md:w-1/2 justify-center py-10 items-center bg-white">
 		<form class="bg-white" id="new_user" action="/users" method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<h1 class="text-gray-800 font-bold text-2xl mb-1">Bienvenue sur Mojo-coaching!</h1>
@@ -21,7 +21,7 @@
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
 				</svg>
-				<input class="pl-2 outline-none border-none" autofocus="autofocus" type="text" value name="user[first_name]" id="user_first_name" placeholder="Firstname" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autofocus="autofocus" type="text" value name="user[first_name]" id="user_first_name" placeholder="Firstname" />
 			</div>
 
 			<%# Lastname %>
@@ -29,7 +29,7 @@
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
 				</svg>
-				<input class="pl-2 outline-none border-none" autofocus="autofocus" type="text" value name="user[last_name]" id="user_last_name" placeholder="Lastname" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autofocus="autofocus" type="text" value name="user[last_name]" id="user_last_name" placeholder="Lastname" />
 			</div>
 
 			<%# Birthdate %>
@@ -37,28 +37,28 @@
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 				</svg>
-				<input class="pl-2 outline-none border-none" autofocus="autofocus" type="date" max="2010-01-01" value name="user[birthdate]" id="user_birthdate" placeholder="Birthdate" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autofocus="autofocus" type="date" max="2010-01-01" value name="user[birthdate]" id="user_birthdate" placeholder="Birthdate" />
 			</div>
 
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
 				</svg>
-				<input class="pl-2 outline-none border-none" autocomplete="email" autofocus="autofocus" type="email" value name="user[email]" id="user_email" placeholder="Email Address" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="email" autofocus="autofocus" type="email" value name="user[email]" id="user_email" placeholder="Email Address" />
 			</div>
 
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
 				<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
 				</svg>
-				<input class="pl-2 outline-none border-none" autocomplete="new-password" type="password" name="user[password]" id="user_password" placeholder="Password" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="new-password" type="password" name="user[password]" id="user_password" placeholder="Password" />
 			</div>
 
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
 				<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
 				</svg>
-				<input class="pl-2 outline-none border-none" autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Password confirm" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Password confirm" />
 			</div>
 
 			<button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">S'inscrire</button>
