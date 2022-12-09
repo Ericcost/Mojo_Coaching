@@ -8,6 +8,12 @@
           <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
             <%= button_to "Voir cette voiture", car_path(car.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
           </div>
+          <div class="text-center m-auto mt-6 w-full h-16">
+          <% unless JoinTableUserCar.where(user_id: current_user.id, car_id: car.id).exists? %>
+            <%= button_to "Ajouter voiture", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+            <%= button_to "Ajouter voiture", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_coach: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+          <% end %>
+          </div>
       </div>
       <% end %>
     </div>
