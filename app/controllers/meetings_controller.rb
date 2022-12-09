@@ -14,7 +14,10 @@ class MeetingsController < ApplicationController
   def new
     @coach = meeting_coach
     @driver = current_user
-    @meeting = Meeting.new
+    @coach_availabilities = get_coach_all_availability
+    @coach_cars = get_coach_all_car
+    @coach_tracks = get_coach_all_track
+    @coach_com_means = get_coach_all_com_mean
   end
 
   # GET /meetings/1/edit
@@ -23,25 +26,33 @@ class MeetingsController < ApplicationController
 
   # POST /meetings or /meetings.json
   def create
-    @meeting = Meeting.new(
-      coach_id: @coach.id,
+    puts "OUI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!" * 100
+    puts params
+    @coach = meeting_coach
+    @coach_availabilities = get_coach_all_availability
+    @coach_cars = get_coach_all_car
+    @coach_tracks = get_coach_all_track
+    @coach_com_means = get_coach_all_com_mean
+    @driver = current_user
+    @new_meeting = Meeting.create!(
+      coach_id: params[:coach_id],
       driver_id: current_user.id,
-      availability_id: params[:availability_id],
+      availability_id: params[:availability_id].to_i,
       duration: 30,
-      meeting_type: params[:meeting_type],
-      video_url: params[:password],
-      com_mean_id: params[:com_mean_id],
-      car_id: params[:car_id],
-      track_id: params[:track_id],
+      meeting_type: params[:meeting_type].to_i,
+      video_url: params[:video_url],
+      com_mean_id: params[:com_mean].to_i,
+      car_id: params[:car].to_i,
+      track_id: params[:track].to_i,
     )
 
     respond_to do |format|
-      if @meeting.save
-        format.html { redirect_to meeting_url(@meeting), notice: "Meeting was successfully created." }
-        format.json { render :show, status: :created, location: @meeting }
+      if @new_meeting.save
+        format.html { redirect_to meeting_url(@new_meeting), notice: "Meeting was successfully created." }
+        format.json { render :show, status: :created, location: @new_meeting.id }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+        format.json { render json: @new_meeting.errors, status: :unprocessable_entity }
       end
     end
   end
