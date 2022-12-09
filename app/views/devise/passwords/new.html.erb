@@ -1,5 +1,5 @@
 <div class="grid h-10  bg-base-300 rounded-box place-items-stretch">
-<form class="new_user" id="new_user" action="/users/password" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="SJogiM5tU73tgipwR9AHKhNK1vdhUDsobR2nNm8RkBFOJQsMIEICI3gaoLYFMwQ80vkF089t8EBapAMyTL75LA" autocomplete="off">
+<form class="new_user" id="new_user" action="/users/password" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" autocomplete="off">
   <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
     <div class="relative py-3 sm:max-w-xl sm:mx-auto">
       <div
@@ -29,3 +29,9 @@
   </div>
 </form>
 </div>
+
+<script>    
+    document.querySelectorAll('form').forEach(function (el) {    
+                el.dataset.turbo = false    
+    })    
+</script>

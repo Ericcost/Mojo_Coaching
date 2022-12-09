@@ -21,8 +21,13 @@ class JoinTableUserCarsController < ApplicationController
 
   # POST /join_table_user_cars or /join_table_user_cars.json
   def create
-    @join_table_user_car = JoinTableUserCar.new(join_table_user_car_params)
-
+    puts "bonjour"
+    puts params
+    puts "bonjour"
+    @join_table_user_car = JoinTableUserCar.new(user_id: current_user.id, car_id: params[:car_id], is_driver: params[:is_driver], is_coach: params[:is_coach])
+    puts "bonjour"
+    puts params
+    puts "bonjour"
     respond_to do |format|
       if @join_table_user_car.save
         format.html { redirect_to join_table_user_car_url(@join_table_user_car), notice: "Join table user car was successfully created." }
@@ -36,6 +41,7 @@ class JoinTableUserCarsController < ApplicationController
 
   # PATCH/PUT /join_table_user_cars/1 or /join_table_user_cars/1.json
   def update
+    @join_table_user_car = JoinTableUserCar.update(user_id: current_user.id, car_id: params[:car_id], is_driver: params[:is_driver], is_coach: params[:is_coach])
     respond_to do |format|
       if @join_table_user_car.update(join_table_user_car_params)
         format.html { redirect_to join_table_user_car_url(@join_table_user_car), notice: "Join table user car was successfully updated." }
