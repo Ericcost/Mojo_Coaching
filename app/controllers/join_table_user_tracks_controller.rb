@@ -21,15 +21,15 @@ class JoinTableUserTracksController < ApplicationController
 
   # POST /join_table_user_tracks or /join_table_user_tracks.json
   def create
-    @join_table_user_track = JoinTableUserTrack.new(join_table_user_track_params)
+    @new_join_table_user_track = JoinTableUserTrack.new(user_id: current_user.id, track_id: params[:track_id], is_driver: params[:is_driver], is_coach: params[:is_coach])
 
     respond_to do |format|
-      if @join_table_user_track.save
-        format.html { redirect_to join_table_user_track_url(@join_table_user_track), notice: "Join table user track was successfully created." }
-        format.json { render :show, status: :created, location: @join_table_user_track }
+      if @new_join_table_user_track.save
+        format.html { redirect_to tracks_path, notice: "Join table user track was successfully created." }
+        format.json { render :show, status: :created, location: @new_join_table_user_track }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @join_table_user_track.errors, status: :unprocessable_entity }
+        format.json { render json: @new_join_table_user_track.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,8 +37,8 @@ class JoinTableUserTracksController < ApplicationController
   # PATCH/PUT /join_table_user_tracks/1 or /join_table_user_tracks/1.json
   def update
     respond_to do |format|
-      if @join_table_user_track.update(join_table_user_track_params)
-        format.html { redirect_to join_table_user_track_url(@join_table_user_track), notice: "Join table user track was successfully updated." }
+      if @join_table_user_track.update(is_driver: params[:is_driver], is_coach: params[:is_coach])
+        format.html { redirect_to tracks_path, notice: "Join table user track was successfully updated." }
         format.json { render :show, status: :ok, location: @join_table_user_track }
       else
         format.html { render :edit, status: :unprocessable_entity }
