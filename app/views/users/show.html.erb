@@ -612,6 +612,10 @@
       </div>
     </div>
 
+    <% if my_profile? %>
+      <%= button_to "Ajouter des moyens de communication", com_means_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
+    <% end %>
+    
     <script src="main.js"></script>
 
   <script>

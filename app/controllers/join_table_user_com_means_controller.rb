@@ -21,11 +21,11 @@ class JoinTableUserComMeansController < ApplicationController
 
   # POST /join_table_user_com_means or /join_table_user_com_means.json
   def create
-    @join_table_user_com_mean = JoinTableUserComMean.new(join_table_user_com_mean_params)
+    @join_table_user_com_mean = JoinTableUserComMean.new(user_id: current_user.id, com_mean_id: params[:com_mean_id])
 
     respond_to do |format|
       if @join_table_user_com_mean.save
-        format.html { redirect_to join_table_user_com_mean_url(@join_table_user_com_mean), notice: "Join table user com mean was successfully created." }
+        format.html { redirect_to com_means_path, notice: "Join table user com mean was successfully created." }
         format.json { render :show, status: :created, location: @join_table_user_com_mean }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class JoinTableUserComMeansController < ApplicationController
   def update
     respond_to do |format|
       if @join_table_user_com_mean.update(join_table_user_com_mean_params)
-        format.html { redirect_to join_table_user_com_mean_url(@join_table_user_com_mean), notice: "Join table user com mean was successfully updated." }
+        format.html { redirect_to com_means_path, notice: "Join table user com mean was successfully updated." }
         format.json { render :show, status: :ok, location: @join_table_user_com_mean }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class JoinTableUserComMeansController < ApplicationController
     @join_table_user_com_mean.destroy
 
     respond_to do |format|
-      format.html { redirect_to join_table_user_com_means_url, notice: "Join table user com mean was successfully destroyed." }
+      format.html { redirect_to com_means_path, notice: "Join table user com mean was successfully destroyed." }
       format.json { head :no_content }
     end
   end
