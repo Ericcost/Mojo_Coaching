@@ -26,8 +26,6 @@ class MeetingsController < ApplicationController
 
   # POST /meetings or /meetings.json
   def create
-    puts "OUI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!" * 100
-    puts params
     @coach = meeting_coach
     @coach_availabilities = get_coach_all_availability
     @coach_cars = get_coach_all_car
