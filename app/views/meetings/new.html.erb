@@ -9,12 +9,12 @@
     <%= f.select :availability_id, options_for_select(@coach_availabilities.collect{ |availability| [availability.start_date, availability.id] }), class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis une disponibilité" %>
   </div>
     
-  <div class="form-group flex flex-col mb-6">
+  <div class="form-group flex flex-col mb-6" id="meeting_type">
     <%= f.label :Type_de_rendez_vous, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
     <%= f.select :meeting_type, options_for_select(Meeting.meeting_types), class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis un type de rendez-vous" %>
   </div>
 
-  <div class="form-group flex flex-col mb-6">
+  <div class="form-group flex flex-col mb-6" id="video_url">
     <%= f.label :URL_de_la_vidéo, class: 'mb-1 text-xs sm:text-sm tracking-wide text-gray-600' %>
     <%= f.text_field :video_url, class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Poste le lien de ta vidéo" %>
   </div>

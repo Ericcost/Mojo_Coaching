@@ -45,6 +45,7 @@ class MeetingsController < ApplicationController
     )
 
     check_meeting_type
+    update_availabilities
 
     respond_to do |format|
       if @new_meeting.save
