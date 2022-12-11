@@ -44,10 +44,10 @@ module MeetingsHelper
 
   def update_availabilities
     if @new_meeting.meeting_type == 'coaching'
-      Availability.find_by(user_id: @coach, start_date: (Availability.find(@new_meeting.availability_id).start_date + 30.minute)).destroy
-      Availability.find(@new_meeting.availability_id).destroy
+      Availability.find_by(user_id: @coach, start_date: (Availability.find(@new_meeting.availability_id).start_date + 30.minute)).update(is_available: false)
+      Availability.find(@new_meeting.availability_id).update(is_available: false)
     else
-      Availability.find(@new_meeting.availability_id).destroy
+      Availability.find(@new_meeting.availability_id).update(is_available: false)
     end
   end
 

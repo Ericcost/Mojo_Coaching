@@ -477,8 +477,8 @@
 
           <div class="profile-body">
 
+            <div class="profile-settings tab">
               <% unless @user_availabilities.empty? %>
-                <div class="profile-settings tab">
                   <div class="account-setting">
                     <h1>Disponibilités</h1>
                       <% @user_availabilities.each do |availability|%>
@@ -486,14 +486,13 @@
                         <%= button_to "Voir cette disponibilité", root_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
                       <% end %>
                   </div>
-                </div>
               <% else %>
-                <div class="profile-settings tab">
                   <div class="account-setting">
                     <h1>Il n'y a aucune disponibilité.</h1>
                   </div>
-                </div>
               <% end %>
+            </div>
+
 
             <div class="profile-posts tab">
               <% unless @user_tracks_as_coach.empty? %>
@@ -512,11 +511,9 @@
                     </div>
                   <% end %>
               <% else %>
-                <div class="profile-settings tab">
                   <div class="account-setting">
                     <h1>Aucun circuit en tant que coach.</h1>
                   </div>
-                </div>
               <% end %>
               <% unless @user_tracks_as_driver.empty? %>
                 <h1>Mes circuits en tant que driver :</h1>
@@ -534,10 +531,8 @@
                     </div>
                   <% end %>
               <% else %>
-                <div class="profile-settings tab">
-                  <div class="account-setting">
-                    <h1>Aucun circuit en tant que driver.</h1>
-                  </div>
+                <div class="account-setting">
+                  <h1>Aucun circuit en tant que driver.</h1>
                 </div>
               <% end %>
             </div>
@@ -559,11 +554,10 @@
                     </div>
                   <% end %>
               <% else %>
-                <div class="profile-settings tab">
-                  <div class="account-setting">
-                    <h1>Aucune voiture en tant que coach.</h1>
-                  </div>
-                </div>              <% end %>
+                <div class="account-setting">
+                  <h1>Aucune voiture en tant que coach.</h1>
+                </div>
+              <% end %>
               <% unless @user_cars_as_driver.empty? %>
                 <h1>Mes voitures en tant que driver :</h1>
                   <% @user_cars_as_driver.each do |car|%>
@@ -579,11 +573,10 @@
                     </div>
                   <% end %>
               <% else %>
-                <div class="profile-settings tab">
-                  <div class="account-setting">
-                    <h1>Aucune voiture en tant que coach.</h1>
-                  </div>
-                </div>              <% end %>
+                <div class="account-setting">
+                  <h1>Aucune voiture en tant que coach.</h1>
+                </div>
+              <% end %>
             </div>
 
             <div class="profile-settings tab">
@@ -593,32 +586,28 @@
               </div>
             </div>
 
-            <% if my_profile? %>
-              <div class="profile-settings tab">
-                <div class="account-setting">
-                  <h1>Mes meetings en tant que coach</h1>
-                    <% @user_meetings_as_coach.each do |coach_meeting|%>
-                      <p><%= coach_meeting.meeting_type %></p>
-                      <%= button_to "Voir ce meeting", meeting_path(coach_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
-                    <% end %>
-                </div>
-                <div class="account-setting">
-                  <h1>Mes meetings en tant que driver</h1>
-                    <% @user_meetings_as_driver.each do |driver_meeting|%>
-                      <p><%= driver_meeting.meeting_type %></p>
-                      <%= button_to "Voir ce meeting", meeting_path(driver_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
-                    <% end %>
-                </div>
-              </div>
-            <% else %>
-              <div class="profile-settings tab">
+            <div class="profile-settings tab">
+              <% if my_profile? %>
+                  <div class="account-setting">
+                    <h1>Mes meetings en tant que coach</h1>
+                      <% @user_meetings_as_coach.each do |coach_meeting|%>
+                        <p><%= coach_meeting.meeting_type %></p>
+                        <%= button_to "Voir ce meeting", meeting_path(coach_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                      <% end %>
+                  </div>
+                  <div class="account-setting">
+                    <h1>Mes meetings en tant que driver</h1>
+                      <% @user_meetings_as_driver.each do |driver_meeting|%>
+                        <p><%= driver_meeting.meeting_type %></p>
+                        <%= button_to "Voir ce meeting", meeting_path(driver_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                      <% end %>
+                  </div>
+              <% else %>
                 <div class="account-setting">
                   <h1>Vous n'avez pas accés à c'est informations !</h1>
                 </div>
-              </div>
-            <% end %>
-
-          </div>
+              <% end %>
+            </div>
         </div>
       </div>
     </div>
