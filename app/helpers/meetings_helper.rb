@@ -36,4 +36,11 @@ module MeetingsHelper
     return array_of_com_mean
   end
 
+  def check_meeting_type
+    if @new_meeting.meeting_type == "coaching"
+      @new_meeting.update(duration: 60)
+    end
+  end
+
+
 end
