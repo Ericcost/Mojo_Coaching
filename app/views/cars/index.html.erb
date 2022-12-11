@@ -9,23 +9,25 @@
             <%= button_to "Voir cette voiture", car_path(car.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
           </div>
           <div class="text-center m-auto mt-6 w-full h-16">
-            <% if JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id).nil? %>
-              <%= button_to "Ajouter une voiture (coach)", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-              <%= button_to "Ajouter une voiture (driver)", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-              <%= button_to "Ajouter une voiture (coach & driver)", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-            <% else %>
-              <% if JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: false).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: false).nil? %>
-                <%= button_to "Supprimer une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <%= button_to "Supprimer une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-              <% elsif JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: true).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: false).nil? %>
-                <%= button_to "Ajouter une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <%= button_to "Supprimer une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-              <% elsif JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: false).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: true).nil? %>
-                <%= button_to "Supprimer une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <%= button_to "Ajouter une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-              <% elsif JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: true).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: true).nil? %>
-                <%= button_to "Ajouter une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <%= button_to "Ajouter une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+            <% if current_user %>
+              <% if JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id).nil? %>
+                <%= button_to "Ajouter une voiture (coach)", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <%= button_to "Ajouter une voiture (driver)", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <%= button_to "Ajouter une voiture (coach & driver)", join_table_user_cars_path, method: :post, params:{car_id: car.id, is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+              <% else %>
+                <% if JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: false).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: false).nil? %>
+                  <%= button_to "Supprimer une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                  <%= button_to "Supprimer une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <% elsif JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: true).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: false).nil? %>
+                  <%= button_to "Ajouter une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                  <%= button_to "Supprimer une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <% elsif JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: false).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: true).nil? %>
+                  <%= button_to "Supprimer une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                  <%= button_to "Ajouter une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <% elsif JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_coach: true).nil? && JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id, is_driver: true).nil? %>
+                  <%= button_to "Ajouter une voiture (coach)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                  <%= button_to "Ajouter une voiture (driver)", join_table_user_car_path(JoinTableUserCar.find_by(user_id: current_user.id, car_id: car.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <% end %>
               <% end %>
             <% end %>
           </div>
