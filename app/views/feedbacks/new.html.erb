@@ -1,9 +1,15 @@
-<h1>New feedback</h1>
+<br/><br/><br/><br/><br/><br/>
 
-<%= render "form", feedback: @feedback %>
+<%= form_with url: feedbacks_path do |f| %>
 
-<br>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.hidden_field :meeting_id, value: params[:meeting_id] %>
+  </div>
 
-<div>
-  <%= link_to "Back to feedbacks", feedbacks_path %>
-</div>
+  <div class="form-group flex flex-col mb-6">
+    <%= f.label :Contenu %>
+    <%= f.text_field :content, class: 'text-sm placeholder-gray-500 pl-10 pr-4 rounded-2xl border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400', prompt: "Choisis une disponibilité" %>
+  </div>
+  
+  <%= f.submit %>
+<% end %>

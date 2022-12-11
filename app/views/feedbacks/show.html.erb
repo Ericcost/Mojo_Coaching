@@ -1,10 +1,3 @@
-<p style="color: green"><%= notice %></p>
+<br/><br/><br/><br/><br/><br/><br/>
 
-<%= render @feedback %>
-
-<div>
-  <%= link_to "Edit this feedback", edit_feedback_path(@feedback) %> |
-  <%= link_to "Back to feedbacks", feedbacks_path %>
-
-  <%= button_to "Destroy this feedback", @feedback, method: :delete %>
-</div>
+<%= @feedback.content %>

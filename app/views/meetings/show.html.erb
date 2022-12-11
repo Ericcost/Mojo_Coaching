@@ -9,3 +9,6 @@ com_mean_id: <%= ComMean.find(@meeting.com_mean_id).communication_mean %><br/>
 car_id: <%= Car.find(@meeting.car_id).model %><br/>
 track_id: <%= Track.find(@meeting.track_id).city %><br/>
 
+<% @meeting.feedbacks.each do |feedback| %>
+  <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get %>
+<% end %>
