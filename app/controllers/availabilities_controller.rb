@@ -26,13 +26,14 @@ class AvailabilitiesController < ApplicationController
     @array_of_slot = create_slot
     @array_of_slot.each_with_index do |slot, index|
       if index == @array_of_slot.size - 1
-        @availability = Availability.new(user_id: current_user.id, start_date: slot)
+        @last_availability = Availability.new(user_id: current_user.id, start_date: slot)
+      else
+        @availability = Availability.create(user_id: current_user.id, start_date: slot)
       end
-      @availability = Availability.create(user_id: current_user.id, start_date: slot)
     end
 
     respond_to do |format|
-      if @availability.save
+      if @last_availability.save
         format.html { redirect_to current_user, notice: "Availabilities was successfully created." }
         format.json { render :show, status: :created, location: @availability }
       else
