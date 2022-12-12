@@ -1,14 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Com means</h1>
-
-<div id="com_means">
-  <% @com_means.each do |com_mean| %>
-    <%= render com_mean %>
-    <p>
-      <%= link_to "Show this com mean", com_mean %>
-    </p>
-  <% end %>
+<div class="grid h-10 rounded-box place-items-stretch">
+  <div class="h-screen">
+    <% @com_means.each do |com_mean| %>
+      <div class="w-80 mt-24 m-auto lg:mt-16 max-w-sm">
+        <img src="https://image.freepik.com/free-vector/app-development-illustration_52683-47931.jpg" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
+        <div class="bg-white shadow-2xl rounded-b-3xl">
+          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= com_mean.communication_mean %></h2>
+          <div class="text-center m-auto mt-6 w-full h-16">
+            <% if JoinTableUserComMean.find_by(user_id: current_user.id, com_mean_id: com_mean.id).nil? %>
+              <%= button_to "Ajouter ce moyen de communication", join_table_user_com_means_path, method: :post, params:{com_mean_id: com_mean.id },  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+            <% else %>
+                <%= button_to "Supprimer ce moyen de communication", join_table_user_com_mean_path(JoinTableUserComMean.find_by(user_id: current_user.id, com_mean_id: com_mean.id)), method: :delete, class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to "New com mean", new_com_mean_path %>
+
+

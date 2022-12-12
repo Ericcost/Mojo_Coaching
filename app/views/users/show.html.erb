@@ -467,27 +467,18 @@
         <div class="right-side">
           <div class="nav">
             <ul>
-              <% unless my_profile? && @user_availabilities.empty? %>
                 <li onclick="tabs(0)" class="user-post">Disponibilités</li>
-              <% end %>
-              <% unless @user_tracks_as_coach.empty? && @user_tracks_as_driver.empty? %>
                 <li onclick="tabs(1)" class="user-post">Circuits</li>
-              <% end %>
-              <% unless @user_cars_as_coach.empty? && @user_cars_as_driver.empty? %>
                 <li onclick="tabs(2)" class="user-review">Voitures</li>
-              <% end %>
                 <li onclick="tabs(3)" class="user-setting">Palmarès</li>
-              <% if my_profile? %>
                 <li onclick="tabs(4)" class="user-setting">Meetings</li>
-              <% end %>
             </ul>
           </div>
 
           <div class="profile-body">
 
-            <% unless my_profile? %>
+            <div class="profile-settings tab">
               <% unless @user_availabilities.empty? %>
-                <div class="profile-settings tab">
                   <div class="account-setting">
                     <h1>Disponibilités</h1>
                       <% @user_availabilities.each do |availability|%>
@@ -495,9 +486,13 @@
                         <%= button_to "Voir cette disponibilité", root_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
                       <% end %>
                   </div>
-                </div>
+              <% else %>
+                  <div class="account-setting">
+                    <h1>Il n'y a aucune disponibilité.</h1>
+                  </div>
               <% end %>
-            <% end %>
+            </div>
+
 
             <div class="profile-posts tab">
               <% unless @user_tracks_as_coach.empty? %>
@@ -515,6 +510,10 @@
                       </div>
                     </div>
                   <% end %>
+              <% else %>
+                  <div class="account-setting">
+                    <h1>Aucun circuit en tant que coach.</h1>
+                  </div>
               <% end %>
               <% unless @user_tracks_as_driver.empty? %>
                 <h1>Mes circuits en tant que driver :</h1>
@@ -531,6 +530,10 @@
                       </div>
                     </div>
                   <% end %>
+              <% else %>
+                <div class="account-setting">
+                  <h1>Aucun circuit en tant que driver.</h1>
+                </div>
               <% end %>
             </div>
 
@@ -550,6 +553,10 @@
                       </div>
                     </div>
                   <% end %>
+              <% else %>
+                <div class="account-setting">
+                  <h1>Aucune voiture en tant que coach.</h1>
+                </div>
               <% end %>
               <% unless @user_cars_as_driver.empty? %>
                 <h1>Mes voitures en tant que driver :</h1>
@@ -565,6 +572,10 @@
                       </div>
                     </div>
                   <% end %>
+              <% else %>
+                <div class="account-setting">
+                  <h1>Aucune voiture en tant que coach.</h1>
+                </div>
               <% end %>
             </div>
 
@@ -575,29 +586,39 @@
               </div>
             </div>
 
-            <% if my_profile? %>
-              <div class="profile-settings tab">
+            <div class="profile-settings tab">
+              <% if my_profile? %>
+                  <div class="account-setting">
+                    <h1>Mes meetings en tant que coach</h1>
+                      <% @user_meetings_as_coach.each do |coach_meeting|%>
+                        <p><%= coach_meeting.meeting_type %></p>
+                        <%= button_to "Voir ce meeting", meeting_path(coach_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                        <% if Feedback.find_by(meeting_id: coach_meeting.id).nil? %>
+                          <p>Vous devez remplir le feedback</p>
+                          <%= button_to "Remplir le feedback", new_feedback_path, method: :get, params:{meeting_id: coach_meeting.id} %>
+                        <% end %>
+                      <% end %>
+                  </div>
+                  <div class="account-setting">
+                    <h1>Mes meetings en tant que driver</h1>
+                      <% @user_meetings_as_driver.each do |driver_meeting|%>
+                        <p><%= driver_meeting.meeting_type %></p>
+                        <%= button_to "Voir ce meeting", meeting_path(driver_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                      <% end %>
+                  </div>
+              <% else %>
                 <div class="account-setting">
-                  <h1>Mes meetings en tant que coach</h1>
-                    <% @user_meetings_as_coach.each do |coach_meeting|%>
-                      <p><%= coach_meeting.meeting_type %></p>
-                      <%= button_to "Voir ce meeting", meeting_path(coach_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
-                    <% end %>
+                  <h1>Vous n'avez pas accés à c'est informations !</h1>
                 </div>
-                <div class="account-setting">
-                  <h1>Mes meetings en tant que driver</h1>
-                    <% @user_meetings_as_driver.each do |driver_meeting|%>
-                      <p><%= driver_meeting.meeting_type %></p>
-                      <%= button_to "Voir ce meeting", meeting_path(driver_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
-                    <% end %>
-                </div>
-              </div>
-            <% end %>
-
-          </div>
+              <% end %>
+            </div>
         </div>
       </div>
     </div>
+
+    <% if my_profile? %>
+      <%= button_to "Ajouter des moyens de communication", com_means_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
+    <% end %>
 
     <script src="main.js"></script>
 

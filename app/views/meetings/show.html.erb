@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<br/><br/><br/><br/><br/><br/><br/>
+coach: <%= User.find(@meeting.coach_id).first_name + " " + User.find(@meeting.coach_id).last_name %><br/>
+driver: <%= User.find(@meeting.driver_id).first_name + " " + User.find(@meeting.driver_id).last_name %><br/>
+availability: <%= Availability.find(@meeting.availability_id).start_date %><br/>
+duration: <%= @meeting.duration.to_s + " minutes." %><br/>
+meeting_type: <%= @meeting.meeting_type %><br/>
+video_url: <%= @meeting.video_url %><br/>
+com_mean_id: <%= ComMean.find(@meeting.com_mean_id).communication_mean %><br/>
+car_id: <%= Car.find(@meeting.car_id).model %><br/>
+track_id: <%= Track.find(@meeting.track_id).city %><br/>
 
-<%= render @meeting %>
-
-<div>
-  <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> |
-  <%= link_to "Back to meetings", meetings_path %>
-
-  <%= button_to "Destroy this meeting", @meeting, method: :delete %>
-</div>
+<% @meeting.feedbacks.each do |feedback| %>
+  <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get %>
+<% end %>

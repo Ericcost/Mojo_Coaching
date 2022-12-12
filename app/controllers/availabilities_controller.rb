@@ -23,11 +23,17 @@ class AvailabilitiesController < ApplicationController
 
   # POST /availabilities or /availabilities.json
   def create
-    @availability = Availability.new(availability_params)
+    @array_of_slot = create_slot
+    @array_of_slot.each_with_index do |slot, index|
+      if index == @array_of_slot.size - 1
+        @availability = Availability.new(user_id: current_user.id, start_date: slot)
+      end
+      @availability = Availability.create(user_id: current_user.id, start_date: slot)
+    end
 
     respond_to do |format|
       if @availability.save
-        format.html { redirect_to availability_url(@availability), notice: "Availability was successfully created." }
+        format.html { redirect_to current_user, notice: "Availabilities was successfully created." }
         format.json { render :show, status: :created, location: @availability }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -26,8 +26,6 @@ class MeetingsController < ApplicationController
 
   # POST /meetings or /meetings.json
   def create
-    puts "OUI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!" * 100
-    puts params
     @coach = meeting_coach
     @coach_availabilities = get_coach_all_availability
     @coach_cars = get_coach_all_car
@@ -46,6 +44,9 @@ class MeetingsController < ApplicationController
       track_id: params[:track].to_i,
     )
 
+    check_meeting_type
+    update_availabilities
+
     respond_to do |format|
       if @new_meeting.save
         format.html { redirect_to meeting_url(@new_meeting), notice: "Meeting was successfully created." }
@@ -55,6 +56,8 @@ class MeetingsController < ApplicationController
         format.json { render json: @new_meeting.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /meetings/1 or /meetings/1.json

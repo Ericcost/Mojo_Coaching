@@ -1,11 +1,13 @@
 class ApplicationController < ActionController::Base
-    before_action :configure_devise_parameters, if: :devise_controller?
+  
+  before_action :configure_devise_parameters, if: :devise_controller?
 
-    def configure_devise_parameters
-      devise_parameter_sanitizer.permit(:sign_up) {|u| u.permit(:first_name, :last_name, :birthdate, :email, :password, :password_confirmation)}
-    end
+  def configure_devise_parameters
+    devise_parameter_sanitizer.permit(:sign_up) {|u| u.permit(:first_name, :last_name, :birthdate, :email, :password, :password_confirmation)}
+  end
 
-    include UsersHelper
-    include MeetingsHelper
+  include UsersHelper
+  include MeetingsHelper
+  include AvailabilitiesHelper
     
 end

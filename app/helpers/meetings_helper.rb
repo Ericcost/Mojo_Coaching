@@ -36,4 +36,19 @@ module MeetingsHelper
     return array_of_com_mean
   end
 
+  def check_meeting_type
+    if @new_meeting.meeting_type == "coaching"
+      @new_meeting.update(duration: 60)
+    end
+  end
+
+  def update_availabilities
+    if @new_meeting.meeting_type == 'coaching'
+      Availability.find_by(user_id: @coach, start_date: (Availability.find(@new_meeting.availability_id).start_date + 30.minute)).update(is_available: false)
+      Availability.find(@new_meeting.availability_id).update(is_available: false)
+    else
+      Availability.find(@new_meeting.availability_id).update(is_available: false)
+    end
+  end
+
 end
