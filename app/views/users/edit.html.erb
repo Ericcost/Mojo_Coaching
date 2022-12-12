@@ -8,7 +8,7 @@
 
     </div>
     <div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
-      <%= form_with model: @user, url: user_path(@user), method: "patch" do |f| %>
+      <%= form_with(model: @user, url: user_path(@user), method: "put") do |f| %>
         <div class='flex items-center justify-center h-full from-teal-100 via-blue-200 to-blue-500 bg-gradient-to-br'>
           <div class='w-full max-w-lg px-10 py-20 mx-auto bg-white rounded-lg shadow-xl'>
             <div class='max-w-md mx-auto space-y-6'>
