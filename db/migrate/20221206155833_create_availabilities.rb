@@ -4,6 +4,7 @@ class CreateAvailabilities < ActiveRecord::Migration[7.0]
       t.belongs_to :user, index: true
       t.datetime :start_date
       t.integer :duration, default: 30
+      t.boolean :is_available, default: true
 
       t.timestamps
     end
