@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :com_means, only: [:index]
   resources :join_table_user_cars, only: [:create, :update]
   resources :join_table_user_tracks, only: [:create, :update]
-  resources :meetings
+  resources :meetings, except: [:update, :destroy]
   resources :feedbacks, only: [:show, :new, :create]
   resources :availabilities
   resources :cars, only: [:index, :show]
