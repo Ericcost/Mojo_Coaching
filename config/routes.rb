@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :join_table_user_tracks, only: [:create, :update]
   resources :meetings, except: [:update, :destroy]
   resources :feedbacks, only: [:show, :new, :create]
-  resources :availabilities
+  resources :availabilities, except: [:index, :show, :update]
   resources :cars, only: [:index, :show]
   resources :tracks, only: [:index, :show]
   devise_for :users
