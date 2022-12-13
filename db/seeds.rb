@@ -22,12 +22,19 @@ Feedback.destroy_all
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: rand(5..15)), email: Faker::Name.first_name+"@TOPGEAR.com", password: Faker::Internet.password, awards: Faker::Beer.style, price_per_hour: Faker::Number.between(from: 1, to: 50))
 end
 
-10.times do
-  Car.create!(model: Faker::Vehicle.make)
+cars_list = ["Formule Ford", "Formule 4", "Formule Renault", "Formule Regional", "Formule 3", "Formule 2", "Formule 1", "Voiture de Tourisme", "GT4", "GT3", "GT2", "LMP4", "LMP3", "LMP2", "LMP1"]
+cars_list.each do |car|
+  Car.create!(model: car)
 end
 
-10.times do
-  Track.create!(name: Faker::Game.title)
+tracks_list = {
+  "France" => ["Magny Cours", "Le Mans", "Le Castellet", "Dijon", "Nogaro", "Albi", "Val de Vienne", "Charade", "Lédenon", "Dreux", "La Ferté Gaucher", "La Bresse", "Le Mas du Clos", "Alès", "Carole", "Issoire", "Les Ecuyers", "Fay de Bretagne", "Fontenay le Comte", "Haute Saintonge", "La Chatre", "Ladoux", "Lurcy Lévis", "Le Luc", "Mérignac", "Mornay", "Pau"],
+  "Europe" => ["Barcelone", "Imola", "Monza", "Spa Francorchamps", "Hockenheim", "Nurburgring", "Portimao", "Misano", "Hungaroring", "Navarra", "Brands Hatch", "Silverstone", "Monaco"]
+}
+tracks_list.each do |key, value|
+  value.each_with_index do |value|
+    Track.create!(location: key, name: value)
+  end
 end
 
 ["téléphone", "email", "Rendez-vous", "Pigeon voyageur", "Signaux de fumée"].each do |commean|
