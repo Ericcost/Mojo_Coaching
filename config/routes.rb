@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :cars, only: [:index, :show]
   resources :tracks, only: [:index, :show]
   devise_for :users
-  resources :users
+  resources :users, only: [:show, :update]
   root 'availabilities#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
