@@ -1,5 +1,5 @@
 <div class="grid h-10  bg-base-300 rounded-box place-items-stretch">
-<div class="h-screen md:flex">
+<div class="h-full md:flex">
 	<div
 		class="grid  relative overflow-hidden md:flex w-1/2 i justify-around items-center hidden bg-cover "
     style="background-image: url('https://images.pexels.com/photos/11685541/pexels-photo-11685541.jpeg?auto=compress&cs=tinysrgb&w=600') ;">
@@ -9,7 +9,7 @@
 		</div>
 
 	</div>
-	<div class="grid  flex md:w-1/2 justify-center py-10 items-center bg-white">
+	<div class="grid  flex md:w-1/2 justify-center px-10 py-10 items-center bg-white">
 		<form class="bg-white" id="new_user" action="/users" method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<h1 class="text-gray-800 font-bold text-2xl mb-1">Bienvenue sur Mojo-coaching!</h1>
@@ -59,6 +59,19 @@
 				</svg>
 				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Password confirm" />
 			</div>
+			
+			<div>
+        <div>
+          <input type="checkbox" id="rgpd policy" name="rgpd policy" value="accept">
+        </div>
+        <div>
+          <div>
+            <label>* Veuillez acceptez la politique de confdentialité RGPD. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, 
+            
+            <%= link_to "reportez-vous à la politique de confidentialité", asset_path('RGPD_mojo_coaching.pdf'), class: "underline underline-offset-2 text-indigo-600"%> <br>
+          </div>
+        </div>
+      </div>
 
 			<button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">S'inscrire</button>
 			<%= link_to "J'ai déjà un compte", new_user_session_path, {class: "text-sm ml-2 hover:text-blue-500 cursor-pointer"} %>
