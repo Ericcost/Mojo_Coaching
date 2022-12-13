@@ -1,12 +1,10 @@
-let url = document.querySelectorAll('.url');
-let rdv = document.querySelectorAll('.rdv');
-console.log(rdv.childNodes[4]);
+let url = document.getElementsByClassName('url');
+let rdv = document.getElementsByClassName('rdv');
+console.log(rdv[0][2]);
 
-url.addEventListener('onChange', function() {
-  if (rdv === 2)
-      url.classList.remove("hidden")
-      url.classList.add("block")
-});
+if (rdv[0][0].innerHTML === "coaching") {
+      url[0].classList.remove("hidden");
+};
 
 
 
