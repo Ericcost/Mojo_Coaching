@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :join_table_user_com_means, only: [:create, :destroy]
-  resources :com_means
+  resources :com_means, only: [:index]
   resources :join_table_user_cars
   resources :join_table_user_tracks
   resources :meetings
