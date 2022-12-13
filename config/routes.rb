@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :meetings
   resources :feedbacks
   resources :availabilities
-  resources :cars
+  resources :cars, only: [:index, :show]
   resources :tracks
   devise_for :users
   resources :users
