@@ -96,9 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183817) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string "country"
-    t.string "city"
-    t.integer "length"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,7 +104,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183817) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.date "birthdate"
+    t.text "description"
     t.text "awards"
     t.integer "price_per_hour"
     t.boolean "is_admin", default: false
