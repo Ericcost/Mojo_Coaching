@@ -45,11 +45,10 @@ class MeetingsController < ApplicationController
     )
 
     update_availabilities
-    @total = calcul_total
 
     respond_to do |format|
       if @new_meeting.save
-        format.html { redirect_to checkout_create_path(@total), notice: "Meeting was successfully created." }
+        format.html { redirect_to root_path, notice: "Meeting was successfully created." }
         format.json { render :show, status: :created, location: @new_meeting.id }
       else
         format.html { render :new, status: :unprocessable_entity }
