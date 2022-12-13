@@ -35,7 +35,7 @@
               <!-- The responsive Dropdown -->
               <button class="block md:hidden py-3 px-4 mx-2 rounded focus:outline-none hover:bg-gray-200 group">
                 <div class="w-5 h-1 bg-gray-600 mb-1"></div>
-                  <div class="absolute top-0 -right-full h-screen w-8/12 bg-white border opacity-0 group-focus:right-0 group-focus:opacity-100 transition-all duration-300">
+                  <div class="absolute top-0 right-full h-screen w-8/12 bg-white border opacity-0 group-focus:right-0 group-focus:opacity-100 transition-all duration-300">
                       <ul class="flex flex-col items-center w-full text-base cursor-pointer pt-10">
                       <li><%= link_to "Accueil", root_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
                       <li><%= link_to "Les voitures", cars_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
@@ -45,8 +45,7 @@
                       <li><%= link_to "S'inscrire", new_user_registration_path, class: "hover:bg-gray-200 py-4 px-6" %></li>
                     <% end %>
                     </ul>
-                  </div>
-                </div>
+                  </div>                
               </button>
 
           <!-- this Dropdown need to be display when the user is connected -->
@@ -66,11 +65,11 @@
                     <div class="py-1">
                       <%= button_to "Mon compte", user_path(current_user.id), method: :get, class: "text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" %>
                       <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" %>
+                    </div>
                   </div>
                 </div>
               </div>
-            <% end %>
-            
+            <% end %>            
           </div>
         </nav>
       </header>
