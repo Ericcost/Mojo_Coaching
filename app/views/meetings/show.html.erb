@@ -1,14 +1,64 @@
-<br/><br/><br/><br/><br/><br/><br/>
-coach: <%= User.find(@meeting.coach_id).first_name + " " + User.find(@meeting.coach_id).last_name %><br/>
-driver: <%= User.find(@meeting.driver_id).first_name + " " + User.find(@meeting.driver_id).last_name %><br/>
-availability: <%= Availability.find(@meeting.availability_id).start_date %><br/>
-duration: <%= @meeting.duration.to_s + " minutes." %><br/>
-meeting_type: <%= @meeting.meeting_type %><br/>
-video_url: <%= @meeting.video_url %><br/>
-com_mean_id: <%= ComMean.find(@meeting.com_mean_id).communication_mean %><br/>
-car_id: <%= Car.find(@meeting.car_id).model %><br/>
-track_id: <%= Track.find(@meeting.track_id).city %><br/>
+    <div class="grid h-10 rounded-box place-items-stretch">
+    <div class="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300 ">
+        <div class="flex flex-row justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-medium">Votre meeting</h1>
+            </div>
+            <div class="inline-flex space-x-2 items-center">
+                <%= link_to "retour a mon profil", user_path, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>                  
+            </div>
+        </div>
+        <p class="text-slate-500">Retrouver les infos essentiels de votre meeting</p>
 
-<% @meeting.feedbacks.each do |feedback| %>
-  <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get %>
-<% end %>
+        <div id="tasks" class="my-5">
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Coach: <%= User.find(@meeting.coach_id).first_name + " " + User.find(@meeting.coach_id).last_name %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Driver: <%= User.find(@meeting.driver_id).first_name + " " + User.find(@meeting.driver_id).last_name %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Date du coaching: <%= Availability.find(@meeting.availability_id).start_date %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-indigo-300 bg-gradient-to-r from-indigo-100 to-transparent hover:from-indigo-200 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Durée: <%= @meeting.duration.to_s + " minutes." %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Type de coaching: <%= @meeting.meeting_type %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Video URL: <%= @meeting.video_url %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Moyen de communication: <%= ComMean.find(@meeting.com_mean_id).communication_mean %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Model de voiture: <%= Car.find(@meeting.car_id).model %></div>
+                </div>
+            </div>
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
+                <div class="inline-flex items-center space-x-2">
+                    <div>Circuit: <%= Track.find(@meeting.track_id).city %></div>
+                </div>
+            </div>
+            <% @meeting.feedbacks.each do |feedback| %>
+              <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block"  %>
+            <% end %>
+        </div>
+    </div>
+    </div>

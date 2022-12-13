@@ -594,8 +594,12 @@
                         <p><%= coach_meeting.meeting_type %></p>
                         <%= button_to "Voir ce meeting", meeting_path(coach_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
                         <% if Feedback.find_by(meeting_id: coach_meeting.id).nil? %>
-                          <p>Vous devez remplir le feedback</p>
-                          <%= button_to "Remplir le feedback", new_feedback_path, method: :get, params:{meeting_id: coach_meeting.id} %>
+                          <% unless is_first_contact_or_debrief?(coach_meeting) %>
+                            <p>Vous devez remplir le feedback</p>
+                            <%= button_to "Remplir le feedback", new_feedback_path, method: :get, params:{meeting_id: coach_meeting.id} %>
+                          <% end %>
+                        <% else %>
+                          <%= button_to "Voir le feedback", feedback_path(Feedback.find_by(meeting_id: coach_meeting.id).id), method: :get %>
                         <% end %>
                       <% end %>
                   </div>
@@ -604,6 +608,9 @@
                       <% @user_meetings_as_driver.each do |driver_meeting|%>
                         <p><%= driver_meeting.meeting_type %></p>
                         <%= button_to "Voir ce meeting", meeting_path(driver_meeting.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
+                        <% unless Feedback.find_by(meeting_id: driver_meeting.id).nil? %>
+                          <%= button_to "Voir le feedback", feedback_path(Feedback.find_by(meeting_id: driver_meeting.id).id), method: :get %>
+                        <% end %>
                       <% end %>
                   </div>
               <% else %>

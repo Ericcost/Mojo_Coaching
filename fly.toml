@@ -1,6 +1,6 @@
-# fly.toml file generated for mojo-coaching on 2022-12-06T10:06:49+01:00
+# fly.toml file generated for mojo-coach on 2022-12-10T23:43:18+01:00
 
-app = "mojo-coaching"
+app = "mojo-coach"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
