@@ -96,6 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_183817) do
   end
 
   create_table "tracks", force: :cascade do |t|
+    t.string "location"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
