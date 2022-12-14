@@ -502,8 +502,8 @@
                       <div class="card">
                         <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
                           <div class="content">
-                            <p class="card-categories"><%= track.country %></p>
-                            <h3 class="card'heading"><%= track.city %></h3>
+                            <p class="card-categories"><%= track. location%></p>
+                            <h3 class="card'heading"><%= track.name %></h3>
                             <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
                           </div>
                         </div>
@@ -522,8 +522,8 @@
                       <div class="card">
                         <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
                           <div class="content">
-                            <p class="card-categories"><%= track.country %></p>
-                            <h3 class="card'heading"><%= track.city %></h3>
+                            <p class="card-categories"><%= track.location %></p>
+                            <h3 class="card'heading"><%= track.name %></h3>
                             <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
                           </div>
                         </div>
