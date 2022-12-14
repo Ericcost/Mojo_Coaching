@@ -6,7 +6,7 @@ class CreateMeetings < ActiveRecord::Migration[7.0]
       t.belongs_to :availability, index: true
       t.integer :duration
       t.integer :meeting_type
-      t.integer :meeting_status
+      t.integer :meeting_status, default: 0
       t.string :video_url
       t.belongs_to :com_mean, index: true
       t.belongs_to :car, index: true
