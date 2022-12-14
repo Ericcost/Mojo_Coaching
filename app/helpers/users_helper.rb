@@ -1,13 +1,15 @@
 module UsersHelper
 
-    def coachs
+    def other_coachs
         @coachs = []
         Availability.all.each do |availability|
             @coachs << User.find(availability.user_id)
         end
         @coachs.uniq!
-        return @coachs
+        @other_coachs = @coachs.reject {|element| element == current_user }
+        return @other_coachs
     end
+
 
     def my_profile?
         return current_user == @user 
