@@ -1,6 +1,7 @@
 class Meeting < ApplicationRecord
 
   enum :meeting_type, [ :first_contact, :coaching, :debrief ]
+  enum :meeting_status, [ :unpaid, :paid ]
 
   belongs_to :coach, class_name: 'User', foreign_key: 'coach_id'
   belongs_to :driver, class_name: 'User', foreign_key: 'driver_id'
