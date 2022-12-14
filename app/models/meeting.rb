@@ -13,11 +13,11 @@ class Meeting < ApplicationRecord
 
   has_many :feedbacks
 
-
   validates :driver_id, presence: true, numericality: { only_integer: true }
   validates :coach_id, presence: true, numericality: { only_integer: true }
   validates :availability_id, presence: true, numericality: { only_integer: true }
-  validates :meeting_type, presence: true, numericality: { only_integer: true }
+  validates :meeting_type, presence: true
+  validates :meeting_status, presence: true
   validates :com_mean_id, presence: true, numericality: { only_integer: true }
 
 end
