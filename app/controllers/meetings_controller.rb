@@ -44,7 +44,6 @@ class MeetingsController < ApplicationController
       track_id: params[:track].to_i,
     )
 
-    check_meeting_type
     update_availabilities
 
     respond_to do |format|
@@ -56,7 +55,8 @@ class MeetingsController < ApplicationController
         format.json { render json: @new_meeting.errors, status: :unprocessable_entity }
       end
     end
-
+    
+    check_meeting_type
 
   end
 
