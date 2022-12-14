@@ -11,4 +11,5 @@ class UserMailer < ApplicationMailer
       @user = user
       @url  = 'https://mojo-coaching.fly.dev/users/sign_in'
       mail(to: @user.email, subject: "Confirmation d'une nouvelle demande de meeting")
-  end
+    end
+end
