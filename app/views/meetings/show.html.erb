@@ -1,4 +1,4 @@
-    <div class="grid h-10 rounded-box place-items-stretch">
+<div class="grid h-10 rounded-box place-items-stretch">
     <div class="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300 ">
         <div class="flex flex-row justify-between items-center">
             <div>
@@ -26,7 +26,7 @@
                     <div>Date du coaching: <%= Availability.find(@meeting.availability_id).start_date %></div>
                 </div>
             </div>
-            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-indigo-300 bg-gradient-to-r from-indigo-100 to-transparent hover:from-indigo-200 transition ease-linear duration-150">
+            <div id="task" class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4  border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150">
                 <div class="inline-flex items-center space-x-2">
                     <div>Durée: <%= @meeting.duration.to_s + " minutes." %></div>
                 </div>
@@ -60,5 +60,7 @@
               <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block"  %>
             <% end %>
         </div>
+				<h2><strong>Une derniére étape pour valider le rendez-vous:</strong></h2>
+				<%= button_to "Passer commande", checkout_create_path(total: @total), remote: true, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>
     </div>
-    </div>
+</div>
