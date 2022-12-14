@@ -1,24 +1,26 @@
-# README
+<h1 align="center">Mojo Coaching 🏎️</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-Things you may want to cover:
+Welcome to our [THP](https://www.thehackingproject.org) project: A site to connect coaches with racing drivers.
 
-* Ruby version
+![alt text](https://www.autohebdo.fr/app/uploads/2021/10/246416156_10227473433046663_6211173565734662860_n-753x494.jpg)
 
-* System dependencies
+### 🌐 - How to access
 
-* Configuration
+↳ [Mojo Coaching 🏎️](https://mojo-coaching.fly.dev) 
 
-* Database creation
+### ✅ - Features
 
-* Database initialization
+- 🚧  W.I.P : Comming soon !
 
-* How to run the test suite
+### 👨‍💻 - Authors Details 
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [@BenjaminCharmes 💸](https://github.com/BenjaminCharmes)
+- [@Ericcost 👨‍🔬](https://github.com/Ericcost)
+- [@Jiyan01 🥷](https://github.com/Jiyan01)
+- [@KevinTAZARO 🇯🇵](https://github.com/KevinTAZARO)
+- [@KyleAktr 👨‍🎨](https://github.com/KyleAktr)
+- [@MacDielly 👨‍🌾](https://github.com/MacDielly)
