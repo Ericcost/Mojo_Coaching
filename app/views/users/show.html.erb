@@ -50,18 +50,26 @@
                                 <!-- Actions -->
                                 <div class="flex space-x-2 sm:mb-2">
 
-                            <% if current_user %>
-                                <% if my_profile? %>
-                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                        <%= button_to "Proposer un coaching", new_availability_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
-                                    </div>
-                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                        <%= button_to "Éditer le profil", edit_user_path(@user), method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
-                                    </div>
-
+                                <% if current_user %>
+                                    <% if my_profile? %>
+                                        <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
+                                            <%= button_to "Proposer un coaching", new_availability_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                        </div>
+                                        <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
+                                            <%= button_to "Éditer le profil", edit_user_path(@user), method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                        </div>
+                                    <% else %>
+                                        <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
+                                            <%= button_to "Réserver une session", new_meeting_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                        </div>
+                                        <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
+                                            <%= button_to "Retour à l'index", root_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                        </div>
+                                    <% end %>
+                                    
+                                    
                                 <% end %>
-                            <% end %>
-                                </div>
+                                </div>                              
 
                             </div>
 
@@ -71,7 +79,7 @@
                         <header class="text-center sm:text-left mb-6">
                             <!-- Name -->
                             <div class="inline-flex items-start mb-2">
-                                <h1 class="text-2xl text-slate-800 font-bold">Carolyn McNeail</h1>
+                                <h1 class="text-2xl text-slate-800 font-bold"><%= @user.first_name + " " + @user.last_name %></h1>
                                 <svg class="w-4 h-4 fill-current shrink-0 text-amber-500 ml-2" viewBox="0 0 16 16">
                                     <path d="M13 6a.75.75 0 0 1-.75-.75 1.5 1.5 0 0 0-1.5-1.5.75.75 0 1 1 0-1.5 1.5 1.5 0 0 0 1.5-1.5.75.75 0 1 1 1.5 0 1.5 1.5 0 0 0 1.5 1.5.75.75 0 1 1 0 1.5 1.5 1.5 0 0 0-1.5 1.5A.75.75 0 0 1 13 6ZM6 16a1 1 0 0 1-1-1 4 4 0 0 0-4-4 1 1 0 0 1 0-2 4 4 0 0 0 4-4 1 1 0 1 1 2 0 4 4 0 0 0 4 4 1 1 0 0 1 0 2 4 4 0 0 0-4 4 1 1 0 0 1-1 1Z" />
                                 </svg>
