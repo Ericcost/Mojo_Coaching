@@ -1,4 +1,3 @@
-
 <body
     class="font-inter antialiased bg-slate-100 text-slate-600"
     :class="{ 'sidebar-expanded': sidebarExpanded }"
@@ -60,62 +59,11 @@
                                         <%= button_to "Éditer le profil", edit_user_path(@user), method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
                                     </div>
 
-
                                 <% end %>
                             <% end %>
                                 </div>
 
-            <div class="profile-settings tab">
-              <% unless @user_availabilities.empty? %>
-                  <div class="account-setting">
-                    <h1>Disponibilités</h1>
-                      <% @user_availabilities.each do |availability|%>
-                        <p><%= availability.start_date %></p>
-                      <% end %>
-                  </div>
-              <% else %>
-                  <div class="account-setting">
-                    <h1>Il n'y a aucune disponibilité.</h1>
-                  </div>
-              <% end %>
-            </div>
-
-
                             </div>
-
-
-            <div class="profile-posts tab">
-              <% unless @user_tracks_as_coach.empty? %>
-                <h1>Mes circuits en tant que coach :</h1>
-                  <% @user_tracks_as_coach.each do |track| %>
-                    <div class="container-card">
-                      <div class="card">
-                        <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
-                          <div class="content">
-                            <p class="card-categories"><%= track. location%></p>
-                            <h3 class="card'heading"><%= track.name %></h3>
-                            <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-              <% else %>
-                  <div class="account-setting">
-                    <h1>Aucun circuit en tant que coach.</h1>
-                  </div>
-              <% end %>
-              <% unless @user_tracks_as_driver.empty? %>
-                <h1>Mes circuits en tant que driver :</h1>
-                  <% @user_tracks_as_driver.each do |track|%>
-                    <div class="container-card">
-                      <div class="card">
-                        <div class="card-bg" style="background-image: url('https://c8.alamy.com/compfr/2j8w1hf/affiche-de-course-vintage-1960s-24-heures-du-mans-1966-2j8w1hf.jpg');">
-                          <div class="content">
-                            <p class="card-categories"><%= track.location %></p>
-                            <h3 class="card'heading"><%= track.name %></h3>
-                            <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold" %>
-                          </div>
 
                         </div>
 
