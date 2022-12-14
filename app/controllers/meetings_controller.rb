@@ -8,6 +8,7 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/1 or /meetings/1.json
   def show
+    @total = calcul_total
   end
 
   # GET /meetings/new
@@ -32,7 +33,7 @@ class MeetingsController < ApplicationController
     @coach_tracks = get_coach_all_track
     @coach_com_means = get_coach_all_com_mean
     @driver = current_user
-    @new_meeting = Meeting.create!(
+    @new_meeting = Meeting.new(
       coach_id: params[:coach_id],
       driver_id: current_user.id,
       availability_id: params[:availability_id].to_i,
@@ -48,7 +49,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @new_meeting.save
-        format.html { redirect_to meeting_url(@new_meeting), notice: "Meeting was successfully created." }
+        format.html { redirect_to meeting_path(@new_meeting.id), notice: "Meeting was successfully created." }
         format.json { render :show, status: :created, location: @new_meeting.id }
       else
         format.html { render :new, status: :unprocessable_entity }
