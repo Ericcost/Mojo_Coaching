@@ -14,7 +14,7 @@ Welcome to our [THP](https://www.thehackingproject.org) project: A site to conne
 
 ### ✅ - Features
 
-- 🚧  W.I.P : Comming soon !
+- 🚧  W.I.P : Coming soon !
 
 ### 👨‍💻 - Authors Details 
 
