@@ -483,7 +483,6 @@
                     <h1>Disponibilités</h1>
                       <% @user_availabilities.each do |availability|%>
                         <p><%= availability.start_date %></p>
-                        <%= button_to "Voir cette disponibilité", root_path, method: :get, class: "lg:text-sm text-lg font-bold" %>
                       <% end %>
                   </div>
               <% else %>
