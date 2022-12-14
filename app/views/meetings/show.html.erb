@@ -60,7 +60,9 @@
               <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block"  %>
             <% end %>
         </div>
-				<h2><strong>Une derniére étape pour valider le rendez-vous:</strong></h2>
-				<%= button_to "Passer commande", checkout_create_path(total: @total), remote: true, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>
-    </div>
+				<% if @meeting.meeting_status == "unpaid" %>
+					<h2><strong>Une derniére étape pour valider le rendez-vous:</strong></h2>
+					<%= button_to "Passer commande", checkout_create_path(total: @total), remote: true, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>
+				<% end %>
+	  </div>
 </div>
