@@ -3,7 +3,7 @@ class AvailabilitiesController < ApplicationController
 
   # GET /availabilities or /availabilities.json
   def index
-    @coachs = coachs
+    @other_coachs = other_coachs
     @availabilities = Availability.all
   end
 
