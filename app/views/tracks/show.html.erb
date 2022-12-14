@@ -1,7 +1,7 @@
 <div class="grid h-10 rounded-box place-items-stretch">
   <div class="h-screen">
     <div class="w-80 mt-24 m-auto lg:mt-16 max-w-sm">
-      <%= image_tag("tracks/#{@track.name.parameterize(separator: '_')}.png", class: "rounded-t-2xl shadow-2xl w-full h-44 lg:w-full lg:h-44 2xl:w-full 2xl:h-44 object-cover", alt: "Photo du circuit de #{@track.model}") %>
+      <%= image_tag("tracks/#{@track.name.parameterize(separator: '_')}.png", class: "rounded-t-2xl shadow-2xl w-full h-44 lg:w-full lg:h-44 2xl:w-full 2xl:h-44 object-cover", alt: "Photo du circuit de #{@track.name}") %>
       <div class="bg-white shadow-2xl rounded-b-3xl pb-6">
         <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= @track.location %></h2>
         <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= @track.name %></h2>
