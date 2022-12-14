@@ -5,7 +5,7 @@
                 <h1 class="text-2xl font-medium">Votre meeting</h1>
             </div>
             <div class="inline-flex space-x-2 items-center">
-                <%= link_to "retour a mon profil", user_path, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>                  
+                <%= link_to "retour a mon profil", user_path(current_user.id), class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>                  
             </div>
         </div>
         <p class="text-slate-500">Retrouver les infos essentiels de votre meeting</p>
