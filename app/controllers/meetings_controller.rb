@@ -57,7 +57,6 @@ class MeetingsController < ApplicationController
     end
     
     check_meeting_type
-
   end
 
   # PATCH/PUT /meetings/1 or /meetings/1.json
