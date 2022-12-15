@@ -22,7 +22,7 @@ Feedback.destroy_all
   User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: rand(5..15)), email: "user#{index+1}@gmail.com", password: "123456", awards: Faker::Beer.style)
 end
 
-User.create!(first_name: "User", last_name: "Admin", description: Faker::Lorem.sentence(word_count: rand(5..15)), email: "admin@gmail.com", password: "123456", awards: Faker::Beer.style)
+User.create!(first_name: "User", last_name: "Admin", description: Faker::Lorem.sentence(word_count: rand(5..15)), email: "admin@gmail.com", password: "123456", awards: Faker::Beer.style, is_admin: true)
 
 cars_list = ["Formule Ford", "Formule 4", "Formule Renault", "Formule Regional", "Formule 3", "Formule 2", "Formule 1", "Voiture de Tourisme", "GT4", "GT3", "GT2", "LMP4", "LMP3", "LMP2", "LMP1"]
 cars_list.each do |car|
