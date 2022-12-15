@@ -65,7 +65,7 @@
                                     </div>
                                   <% else %>
                                     <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                      <%= button_to "Réserver une session", new_meeting_path, method: :get, params: {coach_id: coach.id}, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white"%>
+                                      <%= button_to "Réserver une session", new_meeting_path, method: :get, params: {coach_id: params[:id]}, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white"%>
                                     </div>
                                     <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
                                       <%= button_to "Retour à l'index", root_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
