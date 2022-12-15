@@ -14,7 +14,7 @@ module MeetingsHelper
 
   def get_coach_all_car
     array_of_car = []
-    JoinTableUserCar.where(user_id: params[:coach_id], is_coach: true).each do |car|
+    JoinTableUserCar.where(user_id: params[:coach_id].to_i, is_coach: true).each do |car|
       array_of_car << Car.find(car.car_id)
     end
     return array_of_car
