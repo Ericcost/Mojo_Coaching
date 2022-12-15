@@ -9,42 +9,40 @@
     </div>
 </div>
 
-
-
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 w-full pb-6 pt-6">
-    <% @tracks.each do |track| %>
-      <div class="w-80 mt-24 m-auto lg:mt-16 max-w-sm">
-        <%= image_tag("tracks/#{track.name.parameterize(separator: '_')}.png", class: "rounded-t-2xl shadow-2xl w-full h-44 lg:w-full lg:h-44 2xl:w-full 2xl:h-44 object-cover", alt: "Photo du circuit de #{track.name}") %>
-        <div class="bg-white shadow-2xl rounded-b-3xl pb-6">
-          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= track.name %></h2>
-          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= track.location %></h2>
-          <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
-            <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
-          </div>
-          <div class="text-center m-auto mt-6 w-full h-16">
-            <% if current_user %>
-              <% if JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id).nil? %>
-                <%= button_to "Ajouter une circuit (coach)", join_table_user_tracks_path, method: :post, params:{track_id: track.id, is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <%= button_to "Ajouter une circuit (driver)", join_table_user_tracks_path, method: :post, params:{track_id: track.id, is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <%= button_to "Ajouter une circuit (coach & driver)", join_table_user_tracks_path, method: :post, params:{track_id: track.id, is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-              <% else %>
-                <% if JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: false).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: false).nil? %>
-                  <%= button_to "Supprimer une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                  <%= button_to "Supprimer une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <% elsif JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: true).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: false).nil? %>
-                  <%= button_to "Ajouter une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                  <%= button_to "Supprimer une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <% elsif JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: false).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: true).nil? %>
-                  <%= button_to "Supprimer une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                  <%= button_to "Ajouter une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <% elsif JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: true).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: true).nil? %>
-                  <%= button_to "Ajouter une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                  <%= button_to "Ajouter une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
-                <% end %>
+  <% @tracks.each do |track| %>
+    <div class="w-80 mt-24 m-auto lg:mt-16 max-w-sm">
+      <%= image_tag("tracks/#{track.name.parameterize(separator: '_')}.png", class: "rounded-t-2xl shadow-2xl w-full h-44 lg:w-full lg:h-44 2xl:w-full 2xl:h-44 object-cover", alt: "Photo du circuit de #{track.name}") %>
+      <div class="bg-white shadow-2xl rounded-b-3xl pb-6">
+        <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= track.name %></h2>
+        <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= track.location %></h2>
+        <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
+          <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
+        </div>
+        <div class="text-center m-auto mt-6 w-full h-16">
+          <% if current_user %>
+            <% if JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id).nil? %>
+              <%= button_to "Ajouter une circuit (coach)", join_table_user_tracks_path, method: :post, params:{track_id: track.id, is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+              <%= button_to "Ajouter une circuit (driver)", join_table_user_tracks_path, method: :post, params:{track_id: track.id, is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+              <%= button_to "Ajouter une circuit (coach & driver)", join_table_user_tracks_path, method: :post, params:{track_id: track.id, is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+            <% else %>
+              <% if JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: false).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: false).nil? %>
+                <%= button_to "Supprimer une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <%= button_to "Supprimer une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+              <% elsif JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: true).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: false).nil? %>
+                <%= button_to "Ajouter une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <%= button_to "Supprimer une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+              <% elsif JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: false).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: true).nil? %>
+                <%= button_to "Supprimer une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <%= button_to "Ajouter une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+              <% elsif JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_coach: true).nil? && JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id, is_driver: true).nil? %>
+                <%= button_to "Ajouter une circuit (coach)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: true, is_driver: false},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+                <%= button_to "Ajouter une circuit (driver)", join_table_user_track_path(JoinTableUserTrack.find_by(user_id: current_user.id, track_id: track.id)), method: :put, params:{is_coach: false, is_driver: true},  class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
               <% end %>
             <% end %>
-          </div>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 </div>
