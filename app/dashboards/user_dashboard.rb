@@ -22,7 +22,6 @@ class UserDashboard < Administrate::BaseDashboard
     id: Field::Number,
     first_name: Field::String,
     last_name: Field::String,
-    birthdate: Field::Date,
     awards: Field::Text,
     price_per_hour: Field::Number,
     is_admin: Field::Boolean,
@@ -64,7 +63,6 @@ class UserDashboard < Administrate::BaseDashboard
     id
     first_name
     last_name
-    birthdate
     awards
     price_per_hour
     is_admin
@@ -94,7 +92,6 @@ class UserDashboard < Administrate::BaseDashboard
     availabilities
     first_name
     last_name
-    birthdate
     awards
     price_per_hour
     is_admin

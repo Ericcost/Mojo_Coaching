@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 10.times do
-  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: Faker::Name.first_name+"@TOPGEAR.com", password: Faker::Internet.password, awards: Faker::Beer.style, price_per_hour: Faker::Number.between(from: 1, to: 50))
+  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Name.first_name+"@TOPGEAR.com", password: Faker::Internet.password, awards: Faker::Beer.style, price_per_hour: Faker::Number.between(from: 1, to: 50))
 end
 
 10.times do
