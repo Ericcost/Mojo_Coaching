@@ -1,4 +1,4 @@
-# fly.toml file generated for mojo-coach on 2022-12-15T09:51:34+01:00
+# fly.toml file generated for mojo-coach on 2022-12-15T11:45:55+01:00
 
 app = "mojo-coach"
 kill_signal = "SIGINT"
