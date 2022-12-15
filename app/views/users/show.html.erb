@@ -58,14 +58,14 @@
                                       <%= button_to "Proposer un coaching", new_availability_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
                                     </div>
                                     <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                      <%= button_to "Éditer le profil", edit_user_path(@user), method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                      <%= button_to "Éditer votre profil", edit_user_path(@user), method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
                                     </div>
                                     <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
                                     <%= button_to "Ajouter des moyens de communication", com_means_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
                                     </div>
                                   <% else %>
                                     <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                      <%= button_to "Réserver une session", new_meeting_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                      <%= button_to "Réserver une session", new_meeting_path, method: :get, params: {coach_id: coach.id}, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white"%>
                                     </div>
                                     <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
                                       <%= button_to "Retour à l'index", root_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
@@ -102,9 +102,11 @@
                                     </div>
                                 </div>
 
-                                <% if current_user %>
-                                  <% if my_profile? %>
+                                
                               <!-- Mes meetings -->
+                              <% if current_user %>
+                                  <% if my_profile? %>
+                                  <% unless @user.driver_meetings.empty? %>
                                     <h2 class="text-slate-800 font-semibold mt-4 mb-2">Mes Meetings</h2>                                        
                                       <div class="card flex-row-reverse bg-white p-4 border border-slate-200 rounded-sm shadow-sm">
                                         <ul class="space-y-3">
@@ -141,6 +143,7 @@
                                             <% end %>
                                         </ul>
                                     </div>
+                                      <% end %>
                                       <% end %>
                                 <% end %>
 
