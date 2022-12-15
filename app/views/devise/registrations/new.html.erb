@@ -13,14 +13,14 @@
 		<form class="bg-white" id="new_user" action="/users" method="post">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<h1 class="text-gray-800 font-bold text-2xl mb-1">Bienvenue sur Mojo-coaching!</h1>
-			<p class="text-sm font-normal text-gray-600 mb-7">Welcome on Mojo-coaching!</p>
+			<br><br>
 
 			<%# Firstname %>
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
 				</svg>
-				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autofocus="autofocus" type="text" value name="user[first_name]" id="user_first_name" placeholder="Firstname" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autofocus="autofocus" type="text" value name="user[first_name]" id="user_first_name" placeholder="Prénom" />
 			</div>
 
 			<%# Lastname %>
@@ -28,42 +28,36 @@
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
 				</svg>
-				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autofocus="autofocus" type="text" value name="user[last_name]" id="user_last_name" placeholder="Lastname" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autofocus="autofocus" type="text" value name="user[last_name]" id="user_last_name" placeholder="Nom de famille" />
 			</div>
 
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
 				</svg>
-				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="email" autofocus="autofocus" type="email" value name="user[email]" id="user_email" placeholder="Email Address" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="email" autofocus="autofocus" type="email" value name="user[email]" id="user_email" placeholder="Adresse e-mail" />
 			</div>
 
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
 				<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
 				</svg>
-				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="new-password" type="password" name="user[password]" id="user_password" placeholder="Password" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="new-password" type="password" name="user[password]" id="user_password" placeholder="Mot de passe" />
 			</div>
 
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl">
 				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
 				<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
 				</svg>
-				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Password confirm" />
+				<input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" autocomplete="new-password" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Confirmation du mot de passe" />
 			</div>
-			
+
 			<div>
-        <div>
-          <input type="checkbox" id="rgpd policy" name="rgpd policy" value="accept">
-        </div>
-        <div>
-          <div>
-            <label>* Veuillez acceptez la politique de confdentialité RGPD. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, 
-            
-            <%= link_to "reportez-vous à la politique de confidentialité", asset_path('RGPD_mojo_coaching.pdf'), class: "underline underline-offset-2 text-indigo-600"%> <br>
-          </div>
-        </div>
-      </div>
+				<br>
+				<label><input type="checkbox" id="rgpd policy" name="rgpd policy" value="accept"> * Veuillez acceptez la politique de confdentialité RGPD. Pour en savoir plus sur la gestion de vos données personnelles et pour exercer vos droits, 
+				
+				<%= link_to "reportez-vous à la politique de confidentialité", asset_path('RGPD_mojo_coaching.pdf'), class: "underline underline-offset-2 text-indigo-600"%> <br>
+			</div>
 
 			<button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">S'inscrire</button>
 			<%= link_to "J'ai déjà un compte", new_user_session_path, {class: "text-sm ml-2 hover:text-blue-500 cursor-pointer"} %>
