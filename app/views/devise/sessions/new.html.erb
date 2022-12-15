@@ -1,10 +1,9 @@
 <div class="grid gap-6 w-full pt-12">
 <div class="h-screen md:flex">
 
-	<div class="relative overflow-hidden md:flex w-1/2 i justify-around items-center hidden " style="background-image: url('https://images.pexels.com/photos/12801/pexels-photo-12801.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') ;">
+	<div class="relative overflow-hidden md:flex w-1/2 i justify-around items-center hidden " style="background-image: url('https://arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/HNCPQQIFWSXPSNMLXINZSBCUPQ.jpg') ;">
     <div>
 			<h1 class="text-white font-bold text-4xl font-sans">Déjà membre?</h1>
-			<p class="text-white mt-1">Bon retour parmi nous!</p>
 		</div>
 	</div>
 
@@ -12,7 +11,7 @@
 		<form class="bg-white" action="/users/sign_in" method="POST">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<h1 class="text-gray-800 font-bold text-2xl mb-1">Connecte toi à ton compte :</h1>
-			<p class="text-sm font-normal text-gray-600 mb-7">Log in to your account:</p>
+      <br><br>
       <div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
@@ -23,7 +22,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
         </svg>
-        <input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" type="password" name="user[password]" id="password" placeholder="Password" />
+        <input class="pl-2 pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0  appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200" type="password" name="user[password]" id="password" placeholder="Mot de passe" />
       </div>
         <button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">Connexion</button>
         <input type="hidden" name="user[remember_me]" value="0" class="h-4 w-4 text-indigo-600 focus:ring-ind">
