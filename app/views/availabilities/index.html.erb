@@ -3,8 +3,8 @@
         <div class="bg-cover bg-center  h-auto text-white py-24 px-10 object-fill bg-[url('ban_index.png')]">
           <div class="md:w-full">
             <p class="font-bold text-sm uppercase">Bienvenue</p>
-            <p class="text-3xl font-bold">Rejoignez en t'inscrivant !</p>
-            <p class="text-2xl mb-10 leading-none">Devenez coach, driver ou les deux !</p>
+            <p class="text-3xl font-bold">Rejoignez-nous !</p>
+            <p class="text-2xl mb-10 leading-none">Devenez coach, driver ou bien les deux !</p>
             <% unless current_user %>
               <div class= "flex items-align space-between">
                 <div class= "py-2 px-2">
@@ -38,7 +38,7 @@
 
           <% if current_user %>
             <div class="text-center m-auto mt-6 w-full h-16">
-              <%= button_to "Prendre RDV", new_meeting_path, method: :get, params: {coach_id: coach.id}, class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
+              <%= button_to "Réserver une session !", new_meeting_path, method: :get, params: {coach_id: coach.id}, class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>
             </div>
           <% end %>
   
