@@ -1,5 +1,5 @@
-    <div class="sliderAx h-auto">
-      <div id="slider-1" class="container mx-auto">
+    <div class="mx-auto px-4 sm:px-6 pt-12">
+      <div class="relative px-8 pb-0 md:py-16 md:px-12 bg w-full">
         <div class="bg-cover bg-center  h-auto text-white py-24 px-10 object-fill" style="background-image: url(https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/motorsport/customer-racing/custom_gt3.jpg)">
           <div class="md:w-full">
             <p class="font-bold text-sm uppercase">Bienvenue</p>
@@ -14,8 +14,7 @@
                   <%= button_to "Inscris-toi !", new_user_registration_path, method: :get, class: "bg-indigo-600 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800" %>
                 </div>
               </div>
-            <% end %>
-            </div>
+            <% end %>           
           </div>  
         </div> 
       </div>
@@ -30,8 +29,8 @@
     <div class = "content-center">
       <div class="w-80 mt-24 m-auto lg:mt-16 max-w-sm ">
         <img src="https://image.freepik.com/free-vector/app-development-illustration_52683-47931.jpg" alt="a picture of two web developpers working on the development of an app" class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
-        <div class="bg-white shadow-2xl rounded-b-3xl">
-          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= coach.first_name %></h2>
+        <div class="bg-white shadow-2xl rounded-b-3xl pb-6">
+          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= coach.first_name %> <%= coach.last_name %></h2>
 
           <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
             <%= button_to "Mon profil et mes dispos", user_path(coach.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
