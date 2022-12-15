@@ -49,6 +49,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @new_meeting.save
+        check_meeting_type
         format.html { redirect_to meeting_path(@new_meeting.id), notice: "Meeting was successfully created." }
         format.json { render :show, status: :created, location: @new_meeting.id }
       else
@@ -57,7 +58,6 @@ class MeetingsController < ApplicationController
       end
     end
     
-    check_meeting_type
   end
 
   # PATCH/PUT /meetings/1 or /meetings/1.json

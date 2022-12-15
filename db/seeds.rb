@@ -19,7 +19,7 @@ Feedback.destroy_all
 
 
 10.times do
-  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: rand(5..15)), email: Faker::Name.first_name+"@TOPGEAR.com", password: Faker::Internet.password, awards: Faker::Beer.style, price_per_hour: Faker::Number.between(from: 1, to: 50))
+  User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.sentence(word_count: rand(5..15)), email: Faker::Name.first_name+"@TOPGEAR.com", password: Faker::Internet.password, awards: Faker::Beer.style)
 end
 
 cars_list = ["Formule Ford", "Formule 4", "Formule Renault", "Formule Regional", "Formule 3", "Formule 2", "Formule 1", "Voiture de Tourisme", "GT4", "GT3", "GT2", "LMP4", "LMP3", "LMP2", "LMP1"]
@@ -54,7 +54,7 @@ end
 end
 
 100.times do
-  Availability.create!(user_id: User.all.sample.id, start_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 365))
+  Availability.create!(user_id: User.all.sample.id, start_date: Faker::Time.between(from: DateTime.now, to: DateTime.now + 365), price_per_slot: rand(5..30))
 end
 
 10.times do
