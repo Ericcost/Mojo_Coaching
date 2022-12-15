@@ -1,13 +1,12 @@
-<div class="grid gap-6 w-full pt-12 pb-6">
-<%= form_with url: meetings_path do |f| %>
-<%= f.hidden_field :coach_id, value: @coach.id %>
-<div class='flex items-center justify-center min-h-screen from-teal-100 via-blue-200 to-blue-500 bg-gradient-to-br'>
-		<div class='w-full max-w-lg px-10 py-8 mx-auto bg-white rounded-lg shadow-xl'>
-			<div class='max-w-md mx-auto space-y-6'>
+<div class="grid  w-full pt-12 pb-12">
+  <%= form_with url: meetings_path do |f| %>
+  <%= f.hidden_field :coach_id, value: @coach.id %>
+  <div class='flex items-center justify-center min-h-screen from-teal-100 via-blue-200 to-blue-500 bg-gradient-to-br pb-6'>
+    <div class='w-full max-w-lg px-10 py-8 mx-auto bg-white rounded-lg shadow-xl'>
+      <div class='max-w-md mx-auto space-y-6'>
 
-					<h2 class="text-2xl font-bold ">Choisis un rendez-vous</h2>
-					<p class="my-4 opacity-70">Tous nos coach sont des professionels</p>
-					<hr class="my-6">
+        <h2 class="text-2xl font-bold text-center">Choisis un rendez-vous</h2>
+        <hr class="my-6">
 
         <div>
           <%= f.label :Disponibilité, class: "uppercase text-sm font-bold opacity-70" %>         
@@ -17,7 +16,7 @@
         <% if Meeting.where(coach_id: @coach.id, driver_id: current_user.id).exists? %>
           <div>
             <%= f.label :Type_de_rendez_vous, class: 'uppercase text-sm font-bold opacity-70 mt-3' %>
-            <%= f.select :meeting_type, options_for_select([Meeting.meeting_types.keys[1], Meeting.meeting_types.keys[2]]), {prompt: "Choisis un type de rendez vous"},  {class: "rdv p-3 mt-2 mb-4 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"} %>
+            <%= f.select :meeting_type, options_for_select(Meeting.meeting_types.drop(1).collect{ |type| [type[0], type[1]] }), {prompt: "Choisis un type de rendez vous"},  {class: "rdv p-3 mt-2 mb-4 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"} %>
           </div>
             
           <div>
