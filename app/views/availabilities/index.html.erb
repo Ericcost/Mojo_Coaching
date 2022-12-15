@@ -3,15 +3,15 @@
         <div class="bg-cover bg-center  h-auto text-white py-24 px-10 object-fill bg-[url('ban_index.png')]">
           <div class="md:w-full">
             <p class="font-bold text-sm uppercase">Bienvenue</p>
-            <p class="text-3xl font-bold">Rejoins-nous en t'inscrivant !</p>
-            <p class="text-2xl mb-10 leading-none">Deviens coach, driver ou les deux !</p>
+            <p class="text-3xl font-bold">Rejoignez en t'inscrivant !</p>
+            <p class="text-2xl mb-10 leading-none">Devenez coach, driver ou les deux !</p>
             <% unless current_user %>
               <div class= "flex items-align space-between">
                 <div class= "py-2 px-2">
-                  <%= button_to "Connecte-toi !", new_user_session_path, method: :get, class: "bg-indigo-600 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800" %>
+                  <%= button_to "Connectez-vous !", new_user_session_path, method: :get, class: "bg-indigo-600 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800" %>
                 </div>
                 <div class= "py-2 px-2">
-                  <%= button_to "Inscris-toi !", new_user_registration_path, method: :get, class: "bg-indigo-600 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800" %>
+                  <%= button_to "Inscrivez-vous !", new_user_registration_path, method: :get, class: "bg-indigo-600 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800" %>
                 </div>
               </div>
             <% end %>           
