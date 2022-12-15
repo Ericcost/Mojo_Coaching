@@ -62,7 +62,10 @@
         </div>
 				<% if @meeting.meeting_status == "unpaid" %>
 					<h2><strong>Une derniére étape pour valider le rendez-vous:</strong></h2>
-					<%= button_to "Passer commande", checkout_create_path(total: @total), remote: true, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>
-				<% end %>
+                    <%= form_tag checkout_create_path, method: :post, data: { turbo: false } do %>
+                        <input type="hidden" name="total" value="<%= @total %>" />
+                        <%= submit_tag "Passer commande", class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>
+                    <% end %>				
+                <% end %>
 	  </div>
 </div>
