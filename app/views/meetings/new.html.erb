@@ -8,6 +8,7 @@
         <h2 class="text-2xl font-bold text-center">Choisis un rendez-vous</h2>
         <hr class="my-6">
 
+
         <div>
           <%= f.label :Disponibilité, class: "uppercase text-sm font-bold opacity-70" %>         
           <%= f.select :availability_id, options_for_select(@coach_availabilities.collect{ |availability| [availability.start_date, availability.id] }), {prompt: "Choisis une disponibilité"}, {class: "p-3 mt-2 mb-4 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"} %>
