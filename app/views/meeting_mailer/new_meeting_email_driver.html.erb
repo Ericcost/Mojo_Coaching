@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
+      <h1>Salut <%= @driver.first_name + " " + @driver.last_name %> !</h1>
+      <p>
+        Tu as réservé un coaching avec <%= User.find(@meeting.coach_id).first_name + " " + User.find(@meeting.coach_id).last_name %> à la date suivante: <%= @meeting.availability.start_date %>
+      </p>
+      <p> À très vite sur Mojo Coaching !
+    </body>
+  </html>
