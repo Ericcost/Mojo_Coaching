@@ -83,7 +83,6 @@ gem "table_print", "~> 1.5"
 
 gem 'dotenv-rails'
 gem 'stripe'
-gem "administrate", github: "n-studio/administrate", branch: "compile-assets"
 gem "pry", "~> 0.14.1"
 
 gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
