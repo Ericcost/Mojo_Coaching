@@ -62,23 +62,25 @@
             </div>
 
             <% @meeting.feedbacks.each do |feedback| %>
-              <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get, class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block"  %>
+              <%= button_to "Voir ce feedback", feedback_path(feedback.id), method: :get, class: "py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300"  %>
             <% end %>
         </div>
         
         <div class="flex items-center justify-center gap-16 space-x-4">
           <% if @meeting.meeting_status == "unpaid" %>
               <div>
-                <%= form_tag checkout_create_path, method: :post, data: { turbo: false } do %>
+                  <%= form_tag checkout_create_path, method: :post, data: { turbo: false } do %>
                   <input type="hidden" name="total" value="<%= @total %>" />
                   
-                    <%= submit_tag "Passer commande", class: "p-2 border border-slate-200 rounded-md inline-flex space-x-1 items-center text-indigo-200 hover:text-white bg-indigo-600 hover:bg-indigo-500 text-sm font-medium hidden md:block" %>
+                  <%= submit_tag "Passer commande", class: "py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300" %>
+                  <% end %>	
               </div>
-              <div>
-                    <%= link_to "Retour à mon profil", user_path(current_user.id)%>                  
-              </div>
-              <% end %>				
           <% end %>
+              <div>
+                    <%= link_to "Retour à mon profil", user_path(current_user.id), class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900"%>                  
+              </div>
+              			
+          
         </div>
 	</div>
 </div>
