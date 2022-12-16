@@ -1,5 +1,8 @@
 class Meeting < ApplicationRecord
 
+  after_create :new_meeting_email_coach
+  after_create :new_meeting_email_driver
+
   enum :meeting_type, [ :first_contact, :coaching, :debrief ]
   enum :meeting_status, [ :unpaid, :paid ]
 
@@ -19,5 +22,13 @@ class Meeting < ApplicationRecord
   validates :meeting_type, presence: true
   validates :meeting_status, presence: true
   validates :com_mean_id, presence: true, numericality: { only_integer: true }
+
+  def new_meeting_email_coach
+    MeetingMailer.new_meeting_email_coach(self).deliver_now
+  end
+
+  def new_meeting_email_driver
+    MeetingMailer.new_meeting_email_driver(self).deliver_now
+  end
 
 end

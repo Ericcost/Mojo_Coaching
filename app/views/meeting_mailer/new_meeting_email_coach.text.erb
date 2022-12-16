@@ -1,0 +1,7 @@
+Salut <%= @coach.first_name + " " + @coach.last_name %> !
+
+==========================================================
+
+Le driver <%= User.find(@meeting.driver_id).first_name %> viens de réserver un meeting avec toi à la date suivante: <%= @meeting.availability.start_date %>
+
+À très vite sur Mojo Coaching !
