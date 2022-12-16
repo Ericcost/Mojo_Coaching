@@ -9,7 +9,7 @@ class CheckoutController < ApplicationController
               currency: 'eur',
               unit_amount: (@total*100).to_i,
               product_data: {
-                name: 'Rails Stripe Checkout',
+                name: "Rendez-vous de #{Meeting.where(driver_id: current_user.id).last.meeting_type} avec #{User.find(Meeting.where(driver_id: current_user.id).last.coach_id).first_name + " " + User.find(Meeting.where(driver_id: current_user.id).last.coach_id).last_name}",
               },
             },
             quantity: 1
