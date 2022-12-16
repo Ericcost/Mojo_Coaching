@@ -81,8 +81,6 @@ gem "faker", "~> 3.0"
 
 gem "table_print", "~> 1.5"
 
-gem 'mailjet', :git => 'https://github.com/mailjet/mailjet-gem.git'
-
 gem 'dotenv-rails'
 gem 'stripe'
 gem "pry", "~> 0.14.1"
