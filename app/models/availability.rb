@@ -5,8 +5,6 @@ class Availability < ApplicationRecord
   validates :user_id, presence: true, numericality: { only_integer: true }
   validates :start_date, presence: true
   validates :duration, presence: true, numericality: { only_integer: true }
-
-  #scopes
-  scope :my_availabilities, -> { where(user_id: 1)}
+  validates :price_per_slot, presence: true, numericality: { only_integer: true }
 
 end

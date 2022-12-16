@@ -3,7 +3,7 @@ class AvailabilitiesController < ApplicationController
 
   # GET /availabilities or /availabilities.json
   def index
-    @coachs = coachs
+    @other_coachs = other_coachs
     @availabilities = Availability.all
   end
 
@@ -26,9 +26,9 @@ class AvailabilitiesController < ApplicationController
     @array_of_slot = create_slot
     @array_of_slot.each_with_index do |slot, index|
       if index == @array_of_slot.size - 1
-        @last_availability = Availability.new(user_id: current_user.id, start_date: slot)
+        @last_availability = Availability.new(user_id: current_user.id, start_date: slot, price_per_slot: params[:price_per_slot])
       else
-        @availability = Availability.create(user_id: current_user.id, start_date: slot)
+        @availability = Availability.create(user_id: current_user.id, start_date: slot, price_per_slot: params[:price_per_slot])
       end
     end
 

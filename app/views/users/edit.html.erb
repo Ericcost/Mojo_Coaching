@@ -22,7 +22,10 @@
                 <%= f.text_field :last_name, {class: "p-3 mt-2 mb-4 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"} %>
               </div>
 
-
+              <div>
+                <%= f.label :Description, class: "uppercase text-sm font-bold opacity-70" %>         
+                <%= f.text_field :description, {class: "p-3 mt-2 mb-4 w-full bg-slate-200 rounded border-2 border-slate-200 focus:border-slate-600 focus:outline-none"} %>
+              </div>
 
               <div>
                 <%= f.label :Email, class: "uppercase text-sm font-bold opacity-70" %>         
@@ -37,7 +40,7 @@
 
               <div>
                 <div>
-                  <%= f.submit 'Enregistrer', class: "block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2" %>
+                  <%= f.submit 'Enregistrer', class: "w-full py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300" %>
                 </div>
                 <hr>
                 <div>
