@@ -23,6 +23,7 @@ class UserDashboard < Administrate::BaseDashboard
     first_name: Field::String,
     last_name: Field::String,
     awards: Field::Text,
+    description: Field::Text,
     price_per_hour: Field::Number,
     is_admin: Field::Boolean,
     created_at: Field::DateTime,
@@ -64,6 +65,7 @@ class UserDashboard < Administrate::BaseDashboard
     first_name
     last_name
     awards
+    description
     price_per_hour
     is_admin
     created_at
@@ -93,6 +95,7 @@ class UserDashboard < Administrate::BaseDashboard
     first_name
     last_name
     awards
+    description
     price_per_hour
     is_admin
     email
