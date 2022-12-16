@@ -54,23 +54,31 @@
                                 <div class="flex space-x-2 sm:mb-2">
                                 <% if current_user %>
                                   <% if my_profile? %>
-                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                      <%= button_to "Proposer un coaching", new_availability_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-full">
+                                      <%= button_to "Proposer un coaching", new_availability_path, method: :get, class: "mx-4 btn-sm text-white rounded-full" %>
+
                                     </div>
-                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                      <%= button_to "Éditer votre profil", edit_user_path(@user), method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-full">
+                                      <%= button_to "Éditer votre profil", edit_user_path(@user), method: :get, class: "mx-4 btn-sm text-white" %>
                                     </div>
-                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                    <%= button_to "Ajouter des moyens de communication", com_means_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-full">
+                                    <%= button_to "Ajouter des moyens de communication", com_means_path, method: :get, class: "mx-4 btn-sm text-white" %>
                                     </div>
                                   <% else %>
-                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                      <%= button_to "Réserver une session", new_meeting_path, method: :get, params: {coach_id: params[:id]}, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white"%>
+                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-full">
+                                      <%= button_to "Réserver une session", new_meeting_path, method: :get, params: {coach_id: params[:id]}, class: "mx-4 btn-sm text-white"%>
                                     </div>
-                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">
-                                      <%= button_to "Retour à l'index", root_path, method: :get, class: "mx-4 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" %>
+                                    <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-full">
+                                      <%= button_to "Retour à l'index", root_path, method: :get, class: "mx-4 btn-sm text-white" %>
                                     </div>
                                   <% end %>
+                                <% else %>
+                                  <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-full">
+                                    <%= button_to "Réserver une session", new_user_session_path, method: :get, params: {coach_id: params[:id]}, class: "mx-4 btn-sm text-white"%>
+                                  </div>
+                                  <div class="my-1 btn-sm bg-indigo-500 hover:bg-indigo-600 text-white rounded-full">
+                                    <%= button_to "Retour à l'index", root_path, method: :get, class: "mx-4 btn-sm text-white" %>
+                                  </div>
                                 <% end %>
                                 </div>                         
 
@@ -101,52 +109,82 @@
                                         <p><%= @user.description %></p>
                                     </div>
                                 </div>
-
-                                
+ 
                               <!-- Mes meetings -->
                               <% if current_user %>
-                                  <% if my_profile? %>
+                                <% if my_profile? %>
+                                  <!-- Item driver-->
                                   <% unless @user.driver_meetings.empty? %>
-                                    <h2 class="text-slate-800 font-semibold mt-4 mb-2">Mes Meetings</h2>                                        
+                                    <h2 class="text-slate-800 font-semibold mt-4 mb-2">Meetings en tant que driver à venir</h2>                                        
+                                    <div class="card flex-row-reverse bg-white p-4 border border-slate-200 rounded-sm shadow-sm">
+                                      <ul class="space-y-3">   
+                                        <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6 w-full pb-2">                                         
+                                          <% @user.driver_meetings.each do |meeting| %>
+                                          <li class="sm:flex sm:items-center sm:justify-between">
+                                            <div class="sm:grow flex items-center text-sm">
+                                              <!-- Icon -->
+                                              <div class="w-8 h-8 rounded-full shrink-0 bg-indigo-500 my-2 mr-3">
+                                                <svg class="w-8 h-8 fill-current text-indigo-50" viewBox="0 0 32 32">
+                                                  <path d="M8.994 20.006a1 1 0 0 1-.707-1.707l4.5-4.5a1 1 0 0 1 1.414 0l3.293 3.293 4.793-4.793a1 1 0 1 1 1.414 1.414l-5.5 5.5a1 1 0 0 1-1.414 0l-3.293-3.293L9.7 19.713a1 1 0 0 1-.707.293Z" />
+                                                </svg>
+                                              </div>
+                                              <!-- Position -->
+                                              <div>
+                                                <div class="flex flex-nowrap items-center space-x-2 whitespace-nowrap">
+                                                  <div class="font-medium text-slate-800">Sessions avec <%= User.find(meeting.coach_id).first_name + " " + User.find(meeting.coach_id).last_name %></div>
+                                                  <%= button_to "Voir le détail", meeting_path(meeting.id), method: :get, class:"inline-flex items-center justify-center text-xs font-medium leading-5 rounded-full px-2.5 py-0.5 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out" %>
+                                                </div>
+                                                <div class="flex flex-nowrap items-center space-x-2 whitespace-nowrap">
+                                                  <div>Via <%= ComMean.find(meeting.com_mean_id).communication_mean %></div>
+                                                  <div class="text-slate-400">·</div>
+                                                  <div>le <%= Availability.find(meeting.availability_id).start_date %></div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </li>
+                                          <% end %>
+                                        </div>                                       
+                                      </ul>
+                                    </div>
+                                  <% end %>
+
+                                  <!-- Item coach -->
+                                  <% unless @user.coach_meetings.empty? %>
+                                    <h2 class="text-slate-800 font-semibold mt-4 mb-2">Meetings en tant que coach à venir</h2>                                        
                                       <div class="card flex-row-reverse bg-white p-4 border border-slate-200 rounded-sm shadow-sm">
                                         <ul class="space-y-3">
-
-                                            <!-- Item -->
-                                            <% @user.driver_meetings.each do |meeting| %>
+                                          <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6 w-full pb-2">
+                                            <% @user.coach_meetings.each do |meeting| %>
                                             <li class="sm:flex sm:items-center sm:justify-between">
-                                                <div class="sm:grow flex items-center text-sm">
-                                                    <!-- Icon -->
-                                                    <div class="w-8 h-8 rounded-full shrink-0 bg-indigo-500 my-2 mr-3">
-                                                        <svg class="w-8 h-8 fill-current text-indigo-50" viewBox="0 0 32 32">
-                                                            <path d="M8.994 20.006a1 1 0 0 1-.707-1.707l4.5-4.5a1 1 0 0 1 1.414 0l3.293 3.293 4.793-4.793a1 1 0 1 1 1.414 1.414l-5.5 5.5a1 1 0 0 1-1.414 0l-3.293-3.293L9.7 19.713a1 1 0 0 1-.707.293Z" />
-                                                        </svg>
-                                                    </div>
-                                                    <!-- Position -->
-                                                    <div>
-                                                        <div class="font-medium text-slate-800">Sessions avec <%= User.find(meeting.coach_id).first_name + " " + User.find(meeting.coach_id).last_name %></div>
-                                                        <div class="flex flex-nowrap items-center space-x-2 whitespace-nowrap">
-                                                            <div>Via <%= ComMean.find(meeting.com_mean_id).communication_mean %></div>
-                                                            <div class="text-slate-400">·</div>
-                                                            <div>le <%= Availability.find(meeting.availability_id).start_date %></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Tags -->
-                                                <div class="sm:ml-2 mt-2 sm:mt-0">
-                                                    <ul class="flex flex-wrap sm:justify-end -m-1">
-                                                        <li class="m-1">
-                                                            <%= button_to "Voir le détail", meeting_path(meeting.id), method: :get, class:"inline-flex items-center justify-center text-xs font-medium leading-5 rounded-full px-2.5 py-0.5 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out" %>
-                                                        </li>                                                           
-                                                    </ul>
-                                                </div>
+                                              <div class="sm:grow flex items-center text-sm">
+                                                  <!-- Icon -->
+                                                  <div class="w-8 h-8 rounded-full shrink-0 bg-indigo-500 my-2 mr-3">
+                                                      <svg class="w-8 h-8 fill-current text-indigo-50" viewBox="0 0 32 32">
+                                                          <path d="M8.994 20.006a1 1 0 0 1-.707-1.707l4.5-4.5a1 1 0 0 1 1.414 0l3.293 3.293 4.793-4.793a1 1 0 1 1 1.414 1.414l-5.5 5.5a1 1 0 0 1-1.414 0l-3.293-3.293L9.7 19.713a1 1 0 0 1-.707.293Z" />
+                                                      </svg>
+                                                  </div>
+                                                  <!-- Position -->
+                                                  <div>
+                                                      <div class="flex flex-nowrap items-center space-x-2 whitespace-nowrap">
+                                                        <div class="font-medium text-slate-800">Sessions avec <%= User.find(meeting.driver_id).first_name + " " + User.find(meeting.driver_id).last_name %></div>
+                                                        <%= button_to "Voir le détail", meeting_path(meeting.id), method: :get, class:"inline-flex items-center justify-center text-xs font-medium leading-5 rounded-full px-2.5 py-0.5 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out" %>
+                                                      </div>
+                                                      <div class="flex flex-nowrap items-center space-x-2 whitespace-nowrap">
+                                                          <div>Via <%= ComMean.find(meeting.com_mean_id).communication_mean %></div>
+                                                          <div class="text-slate-400">·</div>
+                                                          <div>le <%= Availability.find(meeting.availability_id).start_date %></div>
+                                                      </div>                                                      
+                                                  </div>
+                                              </div>
                                             </li>
-                                            <% end %>
+                                            <% end %> 
+                                          </div>                                       
                                         </ul>
-                                    </div>
-                                      <% end %>
-                                      <% end %>
+                                      </div>
+                                  <% end %>
                                 <% end %>
-
+                              <% end %>
+                              
                     
                                 <!-- Cards voitures coach -->
                                 <div>
@@ -341,6 +379,49 @@
                                 </div>
                                   <% end %>
                                 <% end %>
+
+                                <!-- Mes dispos -->
+                              <% if current_user %>
+                                <% if my_profile? %>
+                                  <!-- Item coach-->
+                                  <% unless @user.availabilities.empty? %>
+                                    <h2 class="text-slate-800 font-semibold mt-4 mb-2">Mes dispos</h2>                                        
+                                      <div class="card flex-row-reverse bg-white p-4 border border-slate-200 rounded-sm shadow-sm">
+                                        <ul class="space-y-3">     
+                                          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full pb-3">                                       
+                                            <% Availability.where(user_id: @user.id, is_available: true).each do |availability| %>
+                                            <li class="sm:flex sm:items-center sm:justify-between">
+                                                <div class="sm:grow flex items-center text-sm">
+                                                    <!-- Icon -->
+                                                    <div class="w-8 h-8 rounded-full shrink-0 bg-indigo-500 my-2 mr-3">
+                                                        <svg class="w-8 h-8 fill-current text-indigo-50" viewBox="0 0 32 32">
+                                                            <path d="M8.994 20.006a1 1 0 0 1-.707-1.707l4.5-4.5a1 1 0 0 1 1.414 0l3.293 3.293 4.793-4.793a1 1 0 1 1 1.414 1.414l-5.5 5.5a1 1 0 0 1-1.414 0l-3.293-3.293L9.7 19.713a1 1 0 0 1-.707.293Z" />
+                                                        </svg>
+                                                    </div>
+                                                    <!-- Position -->
+                                                    <div>
+                                                        <div class="flex flex-nowrap items-center space-x-2 whitespace-nowrap">
+                                                            <div class="text-slate-400">·</div>
+                                                            <div>le <%= Availability.find(availability.id).start_date %></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Tags -->
+                                                <div class="sm:ml-2 mt-2 sm:mt-0">
+                                                    <ul class="flex flex-wrap sm:justify-end -m-1">
+                                                        <li class="m-1">
+                                                            <%= button_to "Supprimer cette dispo", availability, method: :delete, class:"inline-flex items-center justify-center text-xs font-medium leading-5 rounded-full px-2.5 py-0.5 border border-slate-200 hover:border-slate-300 shadow-sm bg-white text-slate-500 duration-150 ease-in-out" %>
+                                                        </li>                                                           
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <% end %>
+                                          <% end %>                                                                           
+                                        </ul>
+                                        </div>
+                                      </div>
+                                <% end %>
+                              <% end %>
                     
                             </div>
 
@@ -353,6 +434,7 @@
             </div>
 
         </main>
+        
 
     </div>
 
