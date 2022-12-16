@@ -5,6 +5,7 @@
     <div>
       <p class="font-bold">Succès Nous avons bien reçu votre paiement de <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
       <p class="text-sm">Le statut de votre paiement est : <%= @payment_intent.status %>.</p>
+      <%= button_to "Revenir à la page d'accueil", root_path, class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900" %>
     </div>
   </div>
 </div>

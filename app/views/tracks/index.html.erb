@@ -1,9 +1,9 @@
 <div class="mx-auto px-4 sm:px-6 pt-24">
     <!-- CTA box -->
     <div class="relative py-10 px-8 md:py-16 md:px-12 bg-[url('5443089.jpg')] w-full">
-        <div class="relative max-w-3xl mx-auto text-center">
+        <div class="relative max-w-3xl mx-auto text-center bg-gray-600 bg-opacity-20">
             <!-- CTA header -->
-            <h3 class="h3 font-red-hat-display text-2xl font-bold text-black mb-2">Nos pistes</h3>
+            <h3 class="h3 font-red-hat-display text-2xl font-bold text-black mb-2">Nos circuits</h3>
             <p class="text-black-400 text-2xl">Retrouvez nous un peu partout en France et dans toute l'Europe.</p>
         </div>
     </div>
@@ -16,8 +16,8 @@
       <div class="bg-white shadow-2xl rounded-b-3xl pb-6">
         <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= track.name %></h2>
         <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= track.location %></h2>
-        <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
-          <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
+        <div class="w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl text-center">
+          <%= button_to "Voir ce circuit", track_path(track.id), method: :get, class: "w-full py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300"%>
         </div>
         <div class="text-center m-auto mt-6 w-full h-16">
           <% if current_user %>

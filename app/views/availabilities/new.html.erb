@@ -27,11 +27,15 @@
           <p>(Le prix est celui d'un créneau de 30 minutes.)</p>
         </div>
 
-        <div>
-          <%= f.submit 'Enregistrer', class: "py-3 px-6 my-2 bg-blue-200 text-white font-medium rounded hover:bg-blue-400 cursor-pointer ease-in-out duration-300" %>
-        </div>
+        <div class="flex items-center justify-center gap-16 space-x-4">
+          <div>
+            <%= f.submit 'Enregistrer', class: "py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300" %>
+          </div>
 
-          <%= link_to "Retour a l'acceuil", root_path %>
+          <div>
+            <%= link_to "Retour a l'acceuil", root_path, class: "text-gray-500 font-bold lg:text-sm hover:text-gray-900" %>
+          </div>
+        </div>
           
 			</div>
 		</div>

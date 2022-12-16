@@ -74,11 +74,11 @@ User.all.each do |user|
   Availability.create!(user_id: user.id, start_date: @new_availability.start_date + 30.minute, price_per_slot: @new_availability.price_per_slot)
 end
 
-5.times do |index|
-  @new_meeting = Meeting.create!(coach_id: index + 1, driver_id: index + 2, availability_id: Availability.where(user_id: index + 1).sample.id, duration: 30, meeting_type: 0, meeting_status: 1, video_url: Faker::Internet.url, com_mean_id: JoinTableUserComMean.where(user_id: index + 1).sample.com_mean_id, car_id: JoinTableUserCar.where(user_id: index + 1).sample.car_id, track_id: JoinTableUserTrack.where(user_id: index + 1).sample.track_id)
-  Availability.find(@new_meeting.availability_id).update(is_available: false)
-end
+# 5.times do |index|
+#   @new_meeting = Meeting.create!(coach_id: index + 1, driver_id: index + 2, availability_id: Availability.where(user_id: index + 1).sample.id, duration: 30, meeting_type: 0, meeting_status: 1, video_url: Faker::Internet.url, com_mean_id: JoinTableUserComMean.where(user_id: index + 1).sample.com_mean_id, car_id: JoinTableUserCar.where(user_id: index + 1).sample.car_id, track_id: JoinTableUserTrack.where(user_id: index + 1).sample.track_id)
+#   Availability.find(@new_meeting.availability_id).update(is_available: false)
+# end
 
-Meeting.where(meeting_type: "coaching").each do |meeting|
-  Feedback.create!(meeting_id: meeting.id, content: Faker::TvShows::RickAndMorty.quote)
-end
+# Meeting.where(meeting_type: "coaching").each do |meeting|
+#   Feedback.create!(meeting_id: meeting.id, content: Faker::TvShows::RickAndMorty.quote)
+# end
