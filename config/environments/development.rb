@@ -42,7 +42,11 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Mailer localhost only for now, change when on production
+<<<<<<< HEAD
   config.action_mailer.default_url_options = {host: 'mojo-coaching.fly.dev'}
+=======
+  config.action_mailer.default_url_options = { host: 'https://test-mojo-coaching.fly.dev' }
+>>>>>>> 532eec7038fb2a0800b8148e43ce531d2a937703
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
