@@ -1,20 +1,24 @@
-    <div class="mx-auto px-4 sm:px-6 pt-12">
-      <div class="relative px-8 pb-0 md:py-16 md:px-12 bg w-full">
-        <div class="bg-cover bg-center  h-auto text-white py-24 px-10 object-fill bg-[url('ban_index.png')]">
+    <div class="mx-auto px-4 sm:px-6 pt-12 w-full">
+      <div class="relative px-8 bg-cover bg-center h-auto bg w-full object-fill bg-[url('ban_index.png')]">
+        <div class=" text-white pb-18 pt-10 px-10">
           <div class="md:w-full">
-            <p class="font-bold text-sm uppercase">Bienvenue</p>
-            <p class="text-3xl font-bold">Rejoignez-nous !</p>
-            <p class="text-2xl mb-10 leading-none">Devenez coach, driver ou bien les deux !</p>
-            <% unless current_user %>
-              <div class= "flex items-align space-between">
-                <div class= "py-2 px-2">
-                  <%= button_to "Connectez-vous", new_user_session_path, method: :get, class: "bg-indigo-600 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800" %>
+            <div>
+              <p class="font-bold text-sm uppercase">Bienvenue</p>
+              <p class="text-3xl font-bold">Rejoignez-nous !</p>
+              <p class="text-2xl mb-10 leading-none">Devenez coach, driver ou bien les deux !</p>
+            </div>
+            <div class="pb-10">
+              <% unless current_user %>
+                <div class= "flex items-align space-between">
+                  <div class= "py-2 px-2">
+                    <%= button_to "Connectez-vous", new_user_session_path, method: :get, class: "py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300" %>
+                  </div>
+                  <div class= "py-2 px-2">
+                    <%= button_to "Inscrivez-vous", new_user_registration_path, method: :get, class: "py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300" %>
+                  </div>
                 </div>
-                <div class= "py-2 px-2">
-                  <%= button_to "Inscrivez-vous", new_user_registration_path, method: :get, class: "bg-indigo-600 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800" %>
-                </div>
-              </div>
-            <% end %>           
+              <% end %> 
+            </div>
           </div>  
         </div> 
       </div>
@@ -32,8 +36,8 @@
         <div class="bg-white shadow-2xl rounded-b-3xl pb-6">
           <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= coach.first_name %> <%= coach.last_name %></h2>
 
-          <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
-            <%= button_to "Voir le profil", user_path(coach.id), method: :get, class: "lg:text-sm text-lg font-bold"%>
+          <div class="w-72 lg:w-5/6 m-auto mt-6 p-2 rounded-2xl text-center">
+            <%= button_to "Voir le profil", user_path(coach.id), method: :get, class: "w-full py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300"%>
           </div>
 
           <% if current_user %>

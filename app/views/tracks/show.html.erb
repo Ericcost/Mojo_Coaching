@@ -5,8 +5,14 @@
       <div class="bg-white shadow-2xl rounded-b-3xl pb-6">
         <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= @track.location %></h2>
         <h2 class="text-center text-gray-800 text-2xl font-bold pt-6"><%= @track.name %></h2>
-        <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-6 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
-          <%= button_to "Retour à la liste des circuits", tracks_path, method: :get, class: "lg:text-sm text-lg font-bold"%>
+        <div>
+          <div class="w-72 lg:w-5/6 m-auto mt-2 p-2 rounded-2xl text-center">
+            <%= button_to "Retour à la liste des circuits", tracks_path, method: :get, class: "w-full py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300"%>
+          </div>
+        
+          <div class="w-72 lg:w-5/6 m-auto mt-2 p-2 rounded-2xl text-center">
+            <%= button_to "Voir mon profil", user_path(current_user.id), method: :get, class: "w-full py-3 px-3 my-2 bg-blue-300 text-white font-medium rounded hover:bg-blue-600 cursor-pointer ease-in-out duration-300"%>
+          </div>
         </div>
         <div class="text-center m-auto mt-6 w-full h-16">
           <% if current_user %>
