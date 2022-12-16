@@ -52,7 +52,7 @@ module MeetingsHelper
   end
 
   def calcul_total
-    if Meeting.find(params[:id]).meeting_type == "premier_contact" || Meeting.find(params[:id]).meeting_type == "debrief"
+    if Meeting.find(params[:id]).meeting_type == "first_contact" || Meeting.find(params[:id]).meeting_type == "debrief"
       @total = Availability.find(Meeting.find(params[:id]).availability_id).price_per_slot
     elsif Meeting.find(params[:id]).meeting_type == "coaching"
       @total = Availability.find(Meeting.find(params[:id]).availability_id).price_per_slot * 2
